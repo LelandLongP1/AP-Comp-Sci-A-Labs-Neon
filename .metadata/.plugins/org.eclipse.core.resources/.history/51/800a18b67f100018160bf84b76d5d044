@@ -34,6 +34,5 @@ public class Lab04d
 		System.out.println(person.getFirst());
 		System.out.println(person.getLast());
 		System.out.println(person);
-		
 	}
 }

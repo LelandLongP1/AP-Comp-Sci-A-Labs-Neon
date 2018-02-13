@@ -35,5 +35,7 @@ public class Lab04d
 		System.out.println(person.getLast());
 		System.out.println(person);
 		
+		String three = "01 23 45 67 89 0";
+		System.out.print(three.indexOf("45"));
 	}
 }
