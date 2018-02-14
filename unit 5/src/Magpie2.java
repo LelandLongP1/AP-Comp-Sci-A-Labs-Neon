@@ -54,6 +54,22 @@ public class Magpie2
 		else if (statement.indexOf("Mr. Mauro") >= 0){
 			response = "Your teacher is a great dude";
 		}
+		
+		else if (statement.indexOf("sports") >= 0){
+			response = "what sports do you play?";
+		}
+		
+		else if (statement.indexOf("food") >= 0){
+			response = "what is your favorite dish?";
+		}
+		
+		else if (statement.indexOf("drove") >= 0){
+			response = "Do you have your license yet?";
+		}
+		
+		else if (statement.indexOf("yes") >= 0){
+			response = "Interesting...tell me more";
+		}
 		else
 		{
 			response = getRandomResponse();
