@@ -31,17 +31,22 @@ public class Prime
 
 	public boolean isPrime()
 	{
-		return false;
+		for (int i = 2; i < number;i++){
+			if (number% i == 0){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public String toString()
 	{
 		String output = "";
 		if (isPrime() == true){
-			output= number + " " + "is a prime number";
+			output= number + " " + "is prime";
 		}
 		else {
-			output = number + " " + "is not a prime number";
+			output = number + " " + "is not prime";
 		}
 		
 		
