@@ -44,13 +44,7 @@ public class Prime
 			output = number + " " + "is not a prime number";
 		}
 		
-
-
-
-
-
-
-
+		
 		return output;
 	}
 }
