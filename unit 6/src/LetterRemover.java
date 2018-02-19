@@ -31,21 +31,20 @@ public class LetterRemover
 
 	public String removeLetters()
 	{
-		String cleaned = sentence;
-		int loc = sentence.indexOf(lookFor);
-		while (sentence.indexOf(lookFor) != -1){
-		
+		String cleaned = sentence.trim();
+		for (int i = 0; i < sentence.length(); i++){
+			if (cleaned.charAt(i) == lookFor){
+				cleaned = cleaned.replace(lookFor, ' ');
+			}
 		}
-
-
-
-
-
+		if (sentence.indexOf(' ') == -1){
+		cleaned = cleaned.replaceAll(" ", "");
+		}
 		return cleaned;
 	}
 
 	public String toString()
 	{
-		return sentence + " - letter to remove " + lookFor;
+		return sentence + " - letter to remove " + lookFor + ": " + removeLetters();
 	}
 }
