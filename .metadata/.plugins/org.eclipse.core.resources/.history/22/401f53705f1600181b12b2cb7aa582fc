@@ -1,0 +1,59 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import java.util.Scanner;
+import static java.lang.System.*;
+
+public class GuessingGame
+{
+	private int upperBound;
+	private char gameChoice;
+	private int response = 0;
+	private int randomNum;
+	private int counter = 0;
+
+	public GuessingGame(int stop)
+	{
+		
+	}
+
+	public void playGame()
+	{
+		Scanner keyboard = new Scanner(System.in);
+		
+			System.out.println("Guessing Game - How many numbers?");
+			upperBound = keyboard.nextInt();
+			System.out.println("Enter a number between 1 and " + upperBound);
+			response = keyboard.nextInt();
+			randomNum = (int)(Math.random() * upperBound);
+			System.out.println(randomNum);
+			
+			while (response != randomNum){
+				if (response > upperBound){
+					System.out.println("number out of range!");
+				}
+				else {
+					counter = counter + 1;
+				}
+			}
+			
+			if (response == randomNum){
+				System.out.println("It took " + response + " guesses to guess " + response);
+			}
+		
+
+
+
+
+
+	}
+
+	public String toString()
+	{
+		String output="";
+		return output;
+	}
+}
