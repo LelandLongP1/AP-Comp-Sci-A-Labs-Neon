@@ -34,7 +34,7 @@ public class LetterRemover
 		String cleaned = sentence.trim();
 		for (int i = 0; i < sentence.length(); i++){
 			if (cleaned.charAt(i) == lookFor){
-				cleaned = cleaned.replace(lookFor, ' ');
+				cleaned= cleaned.replace(lookFor, ' ');
 			}
 		}
 		if (sentence.indexOf(' ') == -1){

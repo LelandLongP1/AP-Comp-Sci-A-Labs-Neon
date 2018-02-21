@@ -43,13 +43,12 @@ public class GuessingGame
 				}
 			}
 			
-			counter = counter + 1;
 			
 	}//end playGame
 
 	public String toString()
 	{
-		float percent = (counter *100.0f / upperBound);
+		float percent = ((counter + 1) *100.0f / upperBound);
 		String output= "It took " + counter + " guesses to guess " + counter + "\n" +
 						"You guessed wrong " + percent + " percent of the time";
 		return output;
