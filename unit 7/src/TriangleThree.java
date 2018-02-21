@@ -17,20 +17,33 @@ public class TriangleThree
 
 	public TriangleThree(int count, String let)
 	{
+		setTriangle(let,count);
 	}
 
 	public void setTriangle( String let, int sz )
 	{
+		letter = let;
+		size = sz;
 	}
 
 	public String getLetter()
 	{
-		return "#";
+		return letter;
 	}
 
 	public String toString()
 	{
-		String output="";
+		String output = "";
+		for(int r=1; r<=size; r++) 
+		{
+			for(int i=size; i>=r; i--)
+			System.out.print(" ");
+			
+			for(int c=1; c<=r; c++) 
+			System.out.print(letter);
+			System.out.println();
+			
+		}
 		return output+"\n";
 	}
 }
