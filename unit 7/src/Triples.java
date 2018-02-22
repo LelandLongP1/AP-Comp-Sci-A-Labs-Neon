@@ -73,8 +73,12 @@ public class Triples
 						a = i;
 						b = j;
 						c = k;
-						if (greatestCommonFactor(a,b,c) == 1){
-							output = output + a + " " + b + " " + c + "\n";
+						if ((a % 2 == 0 && b % 2 !=0) || (a%2 != 0 && b%2 ==0)){
+							if (c%2 != 0){
+								if (greatestCommonFactor(a,b,c) == 1){
+									output = output + a + " " + b + " " + c + "\n";
+								}
+							}
 						}
 					}
 				}
