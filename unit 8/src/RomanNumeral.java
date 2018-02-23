@@ -19,21 +19,21 @@ public class RomanNumeral
 
 	public RomanNumeral(String str)
 	{
-
+		setRoman(str);
 
 
 	}
 
 	public RomanNumeral(Integer orig)
 	{
-
+		setNumber(orig);
 
 
 	}
 
 	public void setNumber(Integer num)
 	{
-
+		number = num;
 
 
 
@@ -42,18 +42,27 @@ public class RomanNumeral
 
 	public void setRoman(String rom)
 	{
-
+		roman = rom;
 
 
 	}
 
 	public Integer getNumber()
 	{
+		
+	
 		return number;
 	}
 
 	public String toString()
 	{
-		return roman + "\n";
+		String output = "";
+		for (int i = 0; i < NUMBERS.length; i++){
+			while (number >= NUMBERS[i]){
+				output = output + LETTERS[i];
+				number = number - NUMBERS[i];
+			}
+		}
+		return output + "\n";
 	}
 }
