@@ -8,8 +8,9 @@ import static java.lang.System.*;
 
 public class RomanNumeral
 {
-	private Integer number;
+	private Integer number = 0;
 	private String roman;
+
 
 	private final static int[] NUMBERS= {1000,900,500,400,100,90,
 													50,40,10,9,5,4,1};
@@ -33,10 +34,8 @@ public class RomanNumeral
 
 	public void setNumber(Integer num)
 	{
+		 
 		number = num;
-
-
-
 
 	}
 
@@ -49,8 +48,37 @@ public class RomanNumeral
 
 	public Integer getNumber()
 	{
-		
-	
+		number = 0;
+		while (roman != "")
+		{
+			for (int i = 0; i < LETTERS.length; i++)
+			{
+				if (roman.indexOf(LETTERS[i]) == 0)
+				{
+					number += NUMBERS[i];
+					if (LETTERS[i].length() == 1)
+					{
+						if (roman.length() == 1)
+						{
+							roman = "";
+						}
+						else						
+							roman = roman.substring(1);
+					}
+					else if (LETTERS[i].length() == 2)
+					{
+						if (roman.length() == 2)
+						{
+							roman = "";
+						}
+						else						
+							roman = roman.substring(2);
+					}
+					
+				}
+				
+			}
+		}
 		return number;
 	}
 
