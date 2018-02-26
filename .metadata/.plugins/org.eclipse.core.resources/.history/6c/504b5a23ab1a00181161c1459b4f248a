@@ -18,10 +18,10 @@ public class GuessingGame
 	
 	public GuessingGame(int stop)
 	{
-		while (stop == 1){
+		while (stop != 2){
 			playGame();
-			System.out.println(toString());
-			System.out.println("\n\n" + "Do you want to play again");
+			toString();
+			System.out.println("Do you want to play again");
 			stop = keyboard.nextInt();
 		}
 	}
@@ -42,7 +42,7 @@ public class GuessingGame
 				System.out.print("Enter a number between 1 and " + upperBound + " ");
 				response = keyboard.nextInt();
 				if (response > upperBound){
-					System.out.print("number out of range!" + "\n");
+					System.out.print("number out of range!");
 				}
 				else {
 					counter = counter + 1;

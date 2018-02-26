@@ -12,7 +12,7 @@ public class Lab10e
 	public static void main(String args[])
 	{
 		Scanner keyboard = new Scanner(System.in);
-		int response = 1;
+		int response = 'y';
 		
 		
 		GuessingGame test = new GuessingGame(response);
