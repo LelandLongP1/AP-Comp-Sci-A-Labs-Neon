@@ -36,12 +36,13 @@ public class TriangleThree
 		String output = "";
 		for(int r=1; r<=size; r++) 
 		{
-			for(int i=size; i>r; i--)
-			System.out.print(" ");
-			
-			for(int c=1; c<=r; c++) 
-			System.out.print(letter);
-			System.out.println();
+			for(int i=size; i>r; i--){
+			output += " ";
+			}
+			for(int c=1; c<=r; c++){ 
+			output += getLetter();
+			}
+			output += "\n" ;
 			
 		}
 		return output+"\n";
