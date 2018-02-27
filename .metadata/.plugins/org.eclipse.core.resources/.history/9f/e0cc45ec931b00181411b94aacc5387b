@@ -40,6 +40,7 @@ public class Deck {
 		}
 		cards = oldArray;
 		size = cards.length;
+		
 			
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}

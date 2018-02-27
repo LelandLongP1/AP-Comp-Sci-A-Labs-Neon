@@ -31,28 +31,9 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		Card[]oldArray = new Card[0];
-		for (int i = 0; i < ranks.length; i++ ){
-			for (int k = 0; k < suits.length; k++){
-				Card newCard = new Card(ranks[i],suits[k],values[i]);
-				oldArray = getNewArray(newCard,oldArray);
-			}
-		}
-		cards = oldArray;
-		size = cards.length;
+		
 			
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-	}
-	
-	//new array method
-	public Card[] getNewArray(Card newCard,Card[]oldArray){
-		Card[] newArray = new Card[oldArray.length+1];
-		for (int i = 0; i <= newArray.length-2; i++){
-			newArray[i] = oldArray[i];
-		}
-		newArray[newArray.length-1] = newCard;
-		return newArray;
-		
 	}
 
 
