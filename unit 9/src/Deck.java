@@ -44,7 +44,7 @@ public class Deck {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
 	
-	//new array method
+	//new array method to add a new card to a deck
 	public Card[] getNewArray(Card newCard,Card[]oldArray){
 		Card[] newArray = new Card[oldArray.length+1];
 		for (int i = 0; i <= newArray.length-2; i++){
