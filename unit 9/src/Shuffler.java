@@ -104,11 +104,11 @@ public class Shuffler {
 		
 		for (int k = 0; k < values.length; k++){
 			random = rand.nextInt(52);
-			if (values[random] == 0){
-				do{
-				random = rand.nextInt(52);
-				}while(values[random] == 0);
-			}
+			//if (values[random] == 0){
+				//do{
+				//random = rand.nextInt(52);
+				//}while(values[random] == 0);
+			//}
 			shuffled [k] = values[random];
 			values[random] = 0;
 		}
