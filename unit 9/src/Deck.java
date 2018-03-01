@@ -83,6 +83,15 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for( int k = size - 1; k >= 0; k-- ) {
+            int r = (int)(Math.random() * k);
+            Card tmp = cards[r];
+            cards[r] = cards[k];
+            cards[k] = tmp;
+        }
+		
+		
+		
 	}
 
 	/**
@@ -92,13 +101,12 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-			if (size != 0){
-				size = size--;
-				return cards[size-1];
-			}
-			else {
+		
+			if (size == 0){
 				return null;
 			}
+			size--;
+			return cards[size];
 	}
 
 	/**
