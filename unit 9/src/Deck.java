@@ -83,12 +83,28 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		for( int k = size - 1; k >= 0; k-- ) {
+		/*for( int k = size - 1; k >= 0; k-- ) {
             int r = (int)(Math.random() * k);
             Card tmp = cards[r];
             cards[r] = cards[k];
             cards[k] = tmp;
-        }
+        }*/
+		Card[] shuffled = new Card[cards.length];
+		int k = 0;
+		for (int j = 0; j < cards.length/2; j++){
+			shuffled[k] = cards[j];
+			k = k + 2;
+		}
+		
+		k = 1;
+		for (int j = cards.length/2; j < cards.length; j++){
+			shuffled[k] = cards[j];
+			k = k + 2;
+		}
+		
+		for (int i = 0; i < cards.length; i++){
+			cards[i] = shuffled[i];
+		}
 		
 		
 		

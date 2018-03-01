@@ -16,7 +16,9 @@ public class DeckTester {
 		test.shuffle();
 		test.isEmpty();
 		test.size();
-		test.deal();
+		for (int i = 0; i< 52; i++){
+			test.deal();
+		}
 		System.out.println(test);
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
