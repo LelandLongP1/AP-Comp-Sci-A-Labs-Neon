@@ -9,19 +9,19 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+
 import static java.lang.System.*;
 
 public class MadLib
 {
-	private ArrayList<String> verbs;
-	private ArrayList<String> nouns;
-	private ArrayList<String> adjectives;
-	private String output;
+	private ArrayList<String> verbs = new ArrayList<String>();
+	private ArrayList<String> nouns = new ArrayList<String>();
+	private ArrayList<String> adjectives = new ArrayList<String>();
+	private String output = "";
 	
 	public MadLib()
 	{
-
-
 
 	}
 
@@ -36,28 +36,23 @@ public class MadLib
 			Scanner file = new Scanner(new File(fileName));
 			while (file.hasNext()){
 				String reader = file.next();
-				if (reader.equals("@")){
+				if (reader.equals("#")) {
+					output += (getRandomNoun() + " ");
+
+				} else if (reader.equals("@")) {
+					output += (getRandomVerb() + " ");
 					
-				}
-				else if (reader.equals("#")){
+				} else if (reader.equals("&")) {
+					output += (getRandomAdjective() + " ");
 					
+				} else {
+					output += (reader + " ");
+
 				}
-				else if (reader.equals("&")){
-					
-				}
-				/*else{
-					out.print(reader);
-				}*/
 			}
 			
+			
 		
-		
-		
-		
-		
-		
-		
-	
 		
 		}
 		catch(Exception e)
@@ -70,7 +65,7 @@ public class MadLib
 	public void loadNouns()
 	{
 		try{
-			Scanner file = new Scanner(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 10\\src\\nouns.dat"));
+			Scanner file = new Scanner(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 10\\src\\nouns.dat"));
 			while (file.hasNext()){
 				nouns.add(file.next());
 			}
@@ -81,7 +76,7 @@ public class MadLib
 		}
 		catch(Exception e)
 		{
-			out.println("test");
+			
 		}	
 		
 	}
@@ -89,9 +84,9 @@ public class MadLib
 	public void loadVerbs()
 	{
 		try{
-			Scanner file = new Scanner(new File("H:\\Unit10\\Unit10-2016\\Unit10-Assignments\\Lab16d\\verbs.dat"));
+			Scanner file = new Scanner(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 10\\src\\verbs.dat"));
 			while (file.hasNextLine()){
-				verbs.add(file.nextLine());
+				verbs.add(file.next());
 			}
 	
 	
@@ -99,16 +94,16 @@ public class MadLib
 		}
 		catch(Exception e)
 		{
-			out.println("nope");
+			
 		}
 	}
 
 	public void loadAdjectives()
 	{
 		try{
-			Scanner file = new Scanner(new File("H:\\Unit10\\Unit10-2016\\Unit10-Assignments\\Lab16d\\adjectives.dat"));
+			Scanner file = new Scanner(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 10\\src\\adjectives.dat"));
 			while (file.hasNext()){
-				verbs.add(file.next());
+				adjectives.add(file.next());
 			}
 		}
 		catch(Exception e)
@@ -118,23 +113,23 @@ public class MadLib
 
 	public String getRandomVerb()
 	{
-		String randomVerb;
-		randomVerb = verbs.get((int) Math.random() * verbs.size());
-		return randomVerb;
+		Random test = new Random();
+		int num = test.nextInt(verbs.size() - 1);
+		return verbs.get(num);
 	}
 	
 	public String getRandomNoun()
 	{
-		String randomVerb;
-		randomVerb = nouns.get((int) Math.random() * nouns.size());
-		return randomVerb;
+		Random test = new Random();
+		int num = test.nextInt(nouns.size() - 1);
+		return nouns.get(num);
 	}
 	
 	public String getRandomAdjective()
 	{
-		String randomVerb;
-		randomVerb = adjectives.get((int) Math.random() * adjectives.size());
-		return randomVerb;
+		Random test = new Random();
+		int num = test.nextInt(adjectives.size() - 1);
+		return adjectives.get(num);
 	}		
 
 	public String toString()
