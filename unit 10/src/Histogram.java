@@ -20,10 +20,7 @@ public class Histogram
 
 	public Histogram()
 	{
-
-
-
-
+		
 	}
 
 	public Histogram(char[] values, String fName)
@@ -32,7 +29,7 @@ public class Histogram
 		
 		for (int i = 0 ; i < values.length; i++){
 			letters.add(values[i]); 
-			count.add(0);
+			
 		}
 		
 		out.println("search letters = "+letters);
@@ -41,6 +38,7 @@ public class Histogram
 
 	public void loadAndAnalyzeFile() throws IOException
 	{
+		
 		Scanner file = new Scanner(new File(fileName));
 		for (int i = 0; i < letters.size(); i++){
 			int number = 0;
@@ -49,15 +47,15 @@ public class Histogram
 				for (int k = 0; k < word.length(); k++){
 					if (word.charAt(k) == letters.get(i)){
 						number = number + 1;
-						count.set(i, number);
+						
 					}//if statement
 					
-				}//check
+				}//check loop	
 				
 			}//while loop
-			
+			count.add(number);
 		}//for loop
-
+		
 
 
 
