@@ -5,6 +5,8 @@
 //Lab  -
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.util.Arrays.*;
@@ -14,6 +16,8 @@ public class GradeBookFileRunner
 {
    public static void main( String args[] ) throws Exception
    {
+	   List<Class> classList = new ArrayList<Class>();
+	   
 		out.println("Welcome to the Class Stats program!");
 		
 		
@@ -25,7 +29,7 @@ public class GradeBookFileRunner
 		}*/
 		
 		
-		Scanner file = new Scanner(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 11\\src\\gradebook.dat"));
+		Scanner file = new Scanner(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 11\\src\\gradebook.dat"));
 		String className = file.nextLine();
 		int studentNum = file.nextInt();
 		String student = "";
@@ -37,7 +41,11 @@ public class GradeBookFileRunner
 			grades = file.nextLine();
 			test.addStudent(new Student(student,grades));
 		}
+		classList.add(test);
 		out.println(test);
+		test.sort();
+		out.println(test);
+		out.println(classList);
 
 
 

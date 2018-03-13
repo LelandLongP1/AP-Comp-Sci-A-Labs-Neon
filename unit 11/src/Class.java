@@ -5,6 +5,7 @@
 //Lab  -
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -129,6 +130,15 @@ public class Class
 
 		return output;
 	}
+	
+	public void sort(){
+		Collections.sort(studentList);
+	}
+	
+	
+	
+	
+	
 	
 	public String toString()
 	{

@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static java.lang.System.*;
 import static java.util.Arrays.*;
 
-public class Student
+public class Student implements Comparable <Student>
 {
 	private String myName;
 	private Grades myGrades;
@@ -89,5 +89,39 @@ public class Student
 	{
 		
 		return output;
-	}	
+	}
+
+	public int compareTo(Student param) {
+		if (this.getAverage() > param.getAverage()){
+			return 1;
+		}
+		else if (getAverage() < param.getAverage()){
+			return -1;
+		}
+		else {
+			return 0;
+		}
+		
+	}
+	
+	public boolean equals(Object obj){
+		if (this.equals(obj)){
+			return true;
+		}
+		return false;
+	}
+
+	/*@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		if (this.getAverage() > o.getAverage()){
+			return 1;
+		}
+		else if (getAverage() < o.getAverage()){
+			return -1;
+		}
+		else {
+			return 0;
+		}
+	}*/
 }
