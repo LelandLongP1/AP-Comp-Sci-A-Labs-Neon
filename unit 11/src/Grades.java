@@ -11,10 +11,13 @@ import java.util.Scanner;
 import static java.lang.System.*;
 import static java.util.Arrays.*;
 
+import java.lang.reflect.Array;
+
 public class Grades
 {
 	
 	private List<Double> grades = new ArrayList<Double>();
+	private String output = "";
 	
 	public Grades()
 	{
@@ -23,18 +26,22 @@ public class Grades
 	
 	public Grades(String gradeList)
 	{
-		setGrades(gradeList);		
+		setGrades(gradeList);
+		getgrade(gradeList);
+		output = gradeList;
 	}
 	
 	public void setGrades(String gradeList)
 	{
-		Scanner chopper = new Scanner(System.in);
+		Scanner chopper = new Scanner(gradeList);
 		int size = chopper.nextInt();
-		while(chopper.hasNextDouble()){
-			grades.add(chopper.nextDouble());
+		if (chopper.next() != "-"){
+			while (chopper.hasNextDouble()){
+				grades.add(chopper.nextDouble());
+			}
 		}
-
-
+		
+		
 	}
 	
 	public void setGrade(int spot, double grade)
@@ -42,6 +49,18 @@ public class Grades
 		grades.set(spot, grade);
 
 
+	}
+	
+	public String getgrade(String gradeList){
+		String list = "";
+		Scanner chopper = new Scanner(gradeList);
+		int size = chopper.nextInt();
+		if (chopper.next() != "-"){
+			while (chopper.hasNextDouble()){
+				list = list + " " + chopper.nextDouble();
+			}
+		}
+		return list;
 	}
 	
 	public double getSum()
@@ -59,7 +78,11 @@ public class Grades
 	public double getLowGrade()
 	{
 		double low = Double.MAX_VALUE;
-		low = grades.
+		for (int i = 0; i < grades.size(); i++){
+			if (grades.get(i) < low){
+				low = grades.get(i);
+			}
+		}
 
 
 
@@ -70,7 +93,11 @@ public class Grades
 	public double getHighGrade()
 	{
 		double high = Double.MIN_VALUE;
-
+		for (int i = 0; i < grades.size(); i++){
+			if (grades.get(i) > high){
+				high = grades.get(i);
+			}
+		}
 
 
 
@@ -80,13 +107,12 @@ public class Grades
 	
 	public int getNumGrades()
 	{
-		return grades.length;
+		return grades.size();
 	}
 	
 	public String toString()
 	{
-		String output="";
-
+		
 
 
 
