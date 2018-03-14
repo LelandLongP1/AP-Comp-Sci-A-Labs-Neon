@@ -50,7 +50,7 @@ public class Monster implements Comparable
 	}
 	
 	public void setAge(int age){
-		myAge = age;
+		myHeight = age;
 	}
 	
 	
@@ -70,7 +70,7 @@ public class Monster implements Comparable
 	//creates a new copy of this Object
 	public Object clone()
 	{
-	   return new Monster(myHeight,myWeight,myAge);
+	   return new Monster(getHeight(),getWeight(),getAge());
 	}
 
 	public boolean equals( Object obj )
@@ -86,10 +86,10 @@ public class Monster implements Comparable
 	public int compareTo( Object obj ) //height, weight, age
 	{
 		Monster rhs = (Monster)obj;
-		if (Monster.this.getHeight() > rhs.getHeight()){
+		if (Monster.this.getAge() > rhs.getAge()){
 			return 1;
 		}
-		else if (Monster.this.getHeight() < rhs.getHeight()){
+		else if (Monster.this.getAge() < rhs.getAge()){
 			return -1;
 		}
 		else if (Monster.this.getWeight() > rhs.getWeight()){
