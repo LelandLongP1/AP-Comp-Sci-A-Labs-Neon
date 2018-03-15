@@ -15,6 +15,8 @@ public class Word implements Comparable<Word>
 		word = s;
 
 	}
+	
+
 
 	public int compareTo( Word rhs )
 	{
@@ -24,13 +26,15 @@ public class Word implements Comparable<Word>
 		else if (word.length() < rhs.word.length()){
 			return -1;
 		}
-		else if (word.length() == rhs.word.length()){
-			//add here
-		}
 		return 0;
 		
 		
+		
 	}
+	
+	
+	
+	
 
 	public String toString()
 	{

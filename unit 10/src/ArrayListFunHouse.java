@@ -17,7 +17,7 @@ public class ArrayListFunHouse
 	 */
 	public static ArrayList<Integer> getListOfFactors(int number)
 	{
-		ArrayList factorList = new ArrayList(0);
+		ArrayList factorList = new ArrayList();
 		for (int i = 1; i < number; i++){
 			if (number % i == 0){
 				factorList.add(i);
