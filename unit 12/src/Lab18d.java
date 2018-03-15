@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import static java.lang.System.*;
 
 public class Lab18d
