@@ -18,9 +18,9 @@ public class Lab18d
 {
 	public static void main( String args[] ) throws IOException
 	{
-		ArrayList<Word>order = new ArrayList<Word>();
+		ArrayList<Word> ordered = new ArrayList<Word>();
 		ArrayList<Word> temp = new ArrayList<Word>();
-		Scanner file = new Scanner(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 12\\src\\lab18d.dat"));
+		Scanner file = new Scanner(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 12\\src\\lab18d.dat"));
 		Word test;
 		int size = file.nextInt();
 		file.nextLine();
@@ -30,22 +30,41 @@ public class Lab18d
 			
 		}
 		out.println(temp);
-		
-		/*for (int i = 0; i < order.size()-1; i++){
+		ordered = temp;
+		/*for (int i = 0; i < ordered.size()-1; i++){
 			
 				if (temp.get(i).compareTo(temp.get(i+1)) == -1){
-					order.add(0,temp.get(i));
+					ordered.add(0,temp.get(i));
 				}
 				else if (temp.get(i).compareTo(temp.get(i+1)) == 1){
-					order.add(temp.get(i+1));
-					order.add(temp.get(i));
+					ordered.add(temp.get(i+1));
+					ordered.add(temp.get(i));
 				}
 				else{
-					order.add(temp.get(i));
+					ordered.add(temp.get(i));
 				}
-		}*/
+		}
 		
-		out.println(order);
+		
+		
+		*/
+		
+		
+		for (int i = 0; i < temp.size()-1;i++){
+			int spot = i;
+			for (int j = i; j < temp.size(); j++){
+				if (temp.get(j).compareTo(temp.get(spot)) < 0){
+					spot = j;
+				}
+			}
+			Word save = temp.get(i);
+			temp.set(i,temp.get(spot));
+			temp.set(spot, save);
+			
+		}
+		
+		
+		out.println(temp);
 		
 
 
