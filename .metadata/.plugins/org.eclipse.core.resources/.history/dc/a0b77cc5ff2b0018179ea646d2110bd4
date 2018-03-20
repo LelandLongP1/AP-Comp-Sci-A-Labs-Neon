@@ -133,7 +133,5 @@ public class ElevensBoard extends Board {
 	        }
 	        return (hasJack && hasQueen && hasKing);
 	    }
-	
-	
-	
+	}
 }
