@@ -31,6 +31,8 @@ public class Lab18d
 		}
 		out.println(temp);
 		ordered = temp;
+		
+		
 		/*for (int i = 0; i < ordered.size()-1; i++){
 			
 				if (temp.get(i).compareTo(temp.get(i+1)) == -1){
@@ -43,9 +45,7 @@ public class Lab18d
 				else{
 					ordered.add(temp.get(i));
 				}
-		}
-		
-		
+			}
 		
 		*/
 		

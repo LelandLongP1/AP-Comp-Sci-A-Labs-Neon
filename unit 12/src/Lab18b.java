@@ -26,7 +26,7 @@ public class Lab18b
 		out.println("\nharry Monster :: " + harry);
 
 		out.println("\ncloning harry");	
-		sue = (Monster)harry.clone();
+		sue = (Monster) harry.clone();
 		out.println("\nsue Monster :: " + sue);
 
 		Monster mOne = new Monster(33,33,11);
