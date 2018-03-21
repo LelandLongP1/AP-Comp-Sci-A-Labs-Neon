@@ -94,9 +94,13 @@ public class ElevensBoard extends Board {
 		 if (selectedCards.size() < 2) {
 	            return false;
 	        }
+	        //for (int i = 0; i < selectedCards.size() - 1; i++) {
+	            //for (int j = i + 1; j < selectedCards.size(); j++) {
 	                if (cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue() == 11) {
 	                    return true;
 	                }
+	            //}
+	        //}
 	        return false;
 	}
 
@@ -110,7 +114,7 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		 	boolean hasJack = false;
+		 boolean hasJack = false;
 	        boolean hasQueen = false;
 	        boolean hasKing = false;
 	        if (selectedCards.size() < 3) {
