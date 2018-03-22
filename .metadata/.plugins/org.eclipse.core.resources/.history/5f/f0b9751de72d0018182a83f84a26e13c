@@ -38,10 +38,11 @@ public class AtCounter
 
 	public int countAts(int r, int c)
 	{
+		int count = 0;
 		//add in recursive code to count up the # of @s connected
-		if (r >= 0 && r < 10 && c >= 0 && c <10){
+		if (r > 0 && r < 10 && c > 0 && c <10){
 			if (atMat[r][c] == '@'){
-				atCount ++;
+				count ++;
 				atMat[r][c] = 'x';
 				countAts(r+1,c);
 				countAts(r-1,c);
@@ -52,7 +53,10 @@ public class AtCounter
 		
 		
 		
-		return atCount;
+		
+		
+		
+		return count;
 	}
 
 	public int getAtCount()

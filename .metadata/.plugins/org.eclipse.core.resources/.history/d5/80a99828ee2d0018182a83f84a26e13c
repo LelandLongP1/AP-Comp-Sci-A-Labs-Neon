@@ -12,7 +12,6 @@ import static java.lang.System.*;
 public class Maze
 {
    private int[][] maze;
-   private int stringSize = 0;
 
 	public Maze()
 	{
@@ -22,7 +21,15 @@ public class Maze
 
 	public Maze(int size, String line)
 	{
-		
+		Scanner sc = new Scanner(line);
+		int r = 0;
+		int c = 0;
+		for (int i = 0; i < size; i++){
+			while (sc.hasNextInt()){
+				maze[r][c+i] = sc.nextInt();
+			}
+			r += 1;
+		}
 		
 	}
 
@@ -35,7 +42,7 @@ public class Maze
 	public String toString()
 	{
 		String output= "";
-		
+		output += "test" + maze;
 
 
 
