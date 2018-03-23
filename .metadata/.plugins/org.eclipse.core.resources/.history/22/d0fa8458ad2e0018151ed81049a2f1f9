@@ -27,7 +27,7 @@ public class ElevensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -40,7 +40,6 @@ public class ElevensBoard extends Board {
 	 */
 	 public ElevensBoard() {
 	 	super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
-	 	System.out.println("Name: Leland Long\nPeriod: 1\nMarch 23rd, 2018\nComputer Number: 25 ");
 	 }
 
 	/**
@@ -58,8 +57,8 @@ public class ElevensBoard extends Board {
 		 if (selectedCards.size() == 2) {
 	            return containsPairSum11(selectedCards);
 	        }
-	        else if (selectedCards.size() == 1) {
-	            return containsKing(selectedCards);
+	        else if (selectedCards.size() == 3) {
+	            return containsJQK(selectedCards);
 	        }
 	        return false;
 	}
@@ -77,7 +76,7 @@ public class ElevensBoard extends Board {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		 List<Integer> cardsOnBoard = cardIndexes();
 	        if (containsPairSum11(cardsOnBoard) == false) {
-	            return containsKing(cardsOnBoard); //if only one is true
+	            return containsJQK(cardsOnBoard); //if only one is true
 	        }
 	        return true; //if both are true
 	}
@@ -97,7 +96,7 @@ public class ElevensBoard extends Board {
 	        }
 		 for (int i = 0; i < selectedCards.size() - 1; i++) {
 	            for (int j = i + 1; j < selectedCards.size(); j++) {
-	                if (cardAt(selectedCards.get(i)).pointValue() + cardAt(selectedCards.get(j)).pointValue() == 15) {
+	                if (cardAt(selectedCards.get(i)).pointValue() + cardAt(selectedCards.get(j)).pointValue() == 11) {
 	                    return true;
 	                }
 	            }
@@ -113,26 +112,36 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	private boolean containsKing(List<Integer> selectedCards) {
+	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		 	boolean hasJack = false;
+	        boolean hasQueen = false;
 	        boolean hasKing = false;
-	        if (selectedCards.size() < 1) {
+	        if (selectedCards.size() < 3) {
 	            return false;
 	        }
 	        for (int i = 0; i < selectedCards.size(); i++) {
-	            if (cardAt(selectedCards.get(i)).rank() == "king") {
+	            if (cardAt(selectedCards.get(i)).rank() == "jack") {
+	                hasJack = true;
+	            }
+	            else if (cardAt(selectedCards.get(i)).rank() == "queen") {
+	                hasQueen = true;
+	            }
+	            else if (cardAt(selectedCards.get(i)).rank() == "king") {
 	                hasKing = true;
-	           
-	        }
-	            if (hasKing){
-	        	return true;
 	            }
 	        }
-	        System.out.println("Sorry, you lose");
+	        if (hasJack && hasQueen && hasKing){
+	        	return true;
+	        }
 	        return false;
-	   }
+	    }
 	
-	
+	@Override
+	public String toString(){
+		String output = "Name: Leland Long/n ";
+		return output;
+	}
 	
 	
 	

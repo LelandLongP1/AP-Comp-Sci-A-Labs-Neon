@@ -128,7 +128,6 @@ public class ElevensBoard extends Board {
 	        	return true;
 	            }
 	        }
-	        System.out.println("Sorry, you lose");
 	        return false;
 	   }
 	

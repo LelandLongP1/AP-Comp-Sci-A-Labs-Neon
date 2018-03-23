@@ -40,7 +40,7 @@ public class ElevensBoard extends Board {
 	 */
 	 public ElevensBoard() {
 	 	super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
-	 	System.out.println("Name: Leland Long\nPeriod: 1\nMarch 23rd, 2018\nComputer Number: 25 ");
+	 	System.out.println("Name: Leland Long\nPeriod: 1\nMarch 23rd, 2018\nComputer Number 25 ");
 	 }
 
 	/**
@@ -124,13 +124,11 @@ public class ElevensBoard extends Board {
 	                hasKing = true;
 	           
 	        }
-	            if (hasKing){
+	        if (hasKing){
 	        	return true;
-	            }
 	        }
-	        System.out.println("Sorry, you lose");
 	        return false;
-	   }
+	    }
 	
 	
 	
