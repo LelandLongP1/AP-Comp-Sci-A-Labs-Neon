@@ -26,7 +26,7 @@ public class FancyWord
 		   mat[0][i] = s.charAt(i);
 		   mat[i][i] = s.charAt(i);
 		   mat[s.length()-1-i][i] = s.charAt(i);
-		   mat[s.length()-1][i] = s.charAt(i);
+		   //mat[s.length()-1][i] = s.charAt(i);
 	   }
 	   
 		   
