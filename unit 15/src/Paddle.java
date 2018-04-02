@@ -14,14 +14,35 @@ public class Paddle extends Block
 
    public Paddle()
    {
-		super(10,10);
+		super(10,10,10,10);
       speed =5;
    }
 
+   public Paddle(int x, int y){
+	   super(x,y,10,10);
+	   speed = 5;
+   }
+   
+   public Paddle(int x, int y, int w, int h, int s){
+	   super(x,y,w,h);
+	   speed = s;
+   }
+   
+   public Paddle(int x, int y, int s){
+	   super(x,y,10,10);
+	   speed = s;
+   }
+   
+   public Paddle(int x, int y, int w, int h, Color c, int s){
+	   super(x,y,w,h,c);
+	   speed = s;
+   }
 
    //add the other Paddle constructors
 
-
+   public int getSpeed(){
+	   return speed;
+   }
 
 
 
@@ -32,13 +53,18 @@ public class Paddle extends Block
 
    public void moveUpAndDraw(Graphics window)
    {
-
+	  
+	   draw(window, Color.WHITE);
+	   setY(getY() - speed);
+	   draw(window,super.getColor());
 
    }
 
    public void moveDownAndDraw(Graphics window)
    {
-
+	   draw(window, Color.WHITE);
+	   setY(getY() + speed);
+	   draw(window, super.getColor());
 
    }
 
@@ -46,4 +72,9 @@ public class Paddle extends Block
    
    
    //add a toString() method
+   public String toString(){
+	   String output = "";
+	   output = "" + getX() + " " + getY() + " " + getWidth() + " " + getHeight() + " " + getColor() + " " + getSpeed();
+		return output; 
+   }
 }

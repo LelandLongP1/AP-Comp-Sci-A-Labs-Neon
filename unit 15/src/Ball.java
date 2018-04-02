@@ -7,7 +7,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -66,14 +66,14 @@ public class Ball extends Block
    	//draw a white ball at old ball location
 	  draw(window,Color.WHITE);
 
-      setX(getX()+xSpeed);
+      setX(getX()+ getXSpeed());
 		//setY
-      setY(getY()+ySpeed);
+      setY(getY()+ getYSpeed());
 		//draw the ball at its new location
-      draw(window, Color.BLACK);
+      draw(window);
    }
    
-   
+   @Override
 	public boolean equals(Object obj)
 	{
 		Ball two = (Ball)obj;
@@ -95,6 +95,20 @@ public class Ball extends Block
 	}
 	
 	
+	 public boolean didCollideLeft(Object obj){
+		 return true;
+	 }
+	 public boolean didCollideRight(Object obj){
+		 return true;
+	 }
+	 public boolean didCollideTop(Object obj){
+		 return true;
+	 }
+	 public boolean didCollideBottom(Object obj){
+		 return true;
+	 }
+	
+	@Override
    //add a toString() method
 	public String toString(){
 		String output = "";
