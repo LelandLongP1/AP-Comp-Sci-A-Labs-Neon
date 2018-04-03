@@ -30,8 +30,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	{
 		//set up all variables related to the game
 		ball = new Ball(300,300,10,10,Color.BLACK);
-		leftPaddle = new Paddle(100,300,10,50,5);
-		rightPaddle = new Paddle(700,300,10,50,5);
+		leftPaddle = new Paddle(0,300,10,50,5);
+		rightPaddle = new Paddle(775,300,10,50,5);
 		
 
 
@@ -74,30 +74,37 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		
 		
 		//scoring and reset
-		String score = "" + leftScore + "-" + rightScore;
 		
-		graphToBack.setColor(Color.RED);
-		graphToBack.drawString(score, 300, 10);
+		
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.drawString("LeftScore = " + leftScore, 600, 500);
+		graphToBack.drawString("RightScore = " + rightScore, 600, 530);
 		
 		if(!(ball.getX()>=10 && ball.getX()<=780))
 		{
 			ball.setXSpeed(0);
 			ball.setYSpeed(0);
 			
-			graphToBack.setColor(Color.WHITE);
-			graphToBack.fillRect(300, 0, 100, 100);
+			
 			
 			ball.draw(graphToBack, Color.WHITE);
 			
 			if (!(ball.getX()>=10)){
+				graphToBack.setColor(Color.WHITE);
+				graphToBack.drawString("RightScore = " + rightScore, 600, 530);
 				rightScore += 1;
+				graphToBack.setColor(Color.BLACK);
+				graphToBack.drawString("RightScore = " + rightScore, 600, 530);
 			}
 			if (!(ball.getX()<=780)){
+				graphToBack.setColor(Color.WHITE);
+				graphToBack.drawString("LeftScore = " + leftScore, 600, 500);
 				leftScore += 1;
+				graphToBack.setColor(Color.BLACK);
+				graphToBack.drawString("LeftScore = " + leftScore, 600, 500);
 			}
 			
-			graphToBack.setColor(Color.RED);
-			graphToBack.drawString(score, 300, 10);
+			
 			ball.setPos(300, 300);
 			ball.setXSpeed(-2);
 			ball.setYSpeed(1);
@@ -131,26 +138,30 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		//see if the paddles need to be moved
 		if(keys[0] == true)
 		{
+			if (leftPaddle.getY() >= 0)
 			//move left paddle up and draw it on the window
-			leftPaddle.moveUpAndDraw(graphToBack);
+				leftPaddle.moveUpAndDraw(graphToBack);
 		}
 		if(keys[1] == true)
 		{
+			if (leftPaddle.getY() <= 510)
 			//move left paddle down and draw it on the window
-			leftPaddle.moveDownAndDraw(graphToBack);
+				leftPaddle.moveDownAndDraw(graphToBack);
 
 		}
 		if(keys[2] == true)
 		{
-			rightPaddle.moveUpAndDraw(graphToBack);
+			if (rightPaddle.getY() >= 0)
+				rightPaddle.moveUpAndDraw(graphToBack);
 
 		}
 		if(keys[3] == true)
 		{
-			rightPaddle.moveDownAndDraw(graphToBack);
+			if (rightPaddle.getY() <= 510)
+				rightPaddle.moveDownAndDraw(graphToBack);
 		}
 
-
+	
 
 
 

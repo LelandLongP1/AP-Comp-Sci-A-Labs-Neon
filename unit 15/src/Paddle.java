@@ -55,8 +55,12 @@ public class Paddle extends Block
    {
 	  
 	   draw(window, Color.WHITE);
+	   window.fillRect(getX(), getY(), getWidth(), getHeight());
+	   window.setColor(getColor());
 	   setY(getY() - speed);
-	   draw(window,super.getColor());
+	   window.fillRect(getX(), getY(), getWidth(), getHeight());
+	   
+	   
 
    }
 
