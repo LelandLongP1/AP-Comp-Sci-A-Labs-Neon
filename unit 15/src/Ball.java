@@ -96,18 +96,31 @@ public class Ball extends Block implements Collidable
 	
 	
 	 public boolean didCollideLeft(Object obj){
-		 return true;
+		 Paddle compare = (Paddle)obj;
+		 if(this.getX() <= compare.getX() && (this.getX() >= 91) && (compare.getY() <= this.getY()) && this.getY() <= compare.getY() + compare.getHeight()){
+			 return true;
+		 }
+		 return false;
 	 }
 	 public boolean didCollideRight(Object obj){
-		 return true;
+		 Paddle compare = (Paddle)obj;
+		 if ((this.getX() >= compare.getX()) && (this.getX() <= 711) && (compare.getY() <= this.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) )
+			 return true;
+		 return false;
 	 }
+	 
+	 
+	 
 	 public boolean didCollideTop(Object obj){
-		 return true;
+		return getY() <= 10;
 	 }
+	 
+	 
 	 public boolean didCollideBottom(Object obj){
-		 return true;
+		return getY() >= 550;
 	 }
 	
+	 
 	@Override
    //add a toString() method
 	public String toString(){
