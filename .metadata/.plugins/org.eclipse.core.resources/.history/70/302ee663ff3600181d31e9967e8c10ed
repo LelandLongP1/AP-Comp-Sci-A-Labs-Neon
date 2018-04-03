@@ -24,7 +24,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private BufferedImage back;
 	private int leftScore = 0;
 	private int rightScore = 0;
-	
+
 
 	public Pong()
 	{

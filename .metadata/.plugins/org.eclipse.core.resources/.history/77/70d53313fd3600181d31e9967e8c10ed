@@ -15,14 +15,14 @@ public class Ball extends Block implements Collidable
 	public Ball()
 	{
 		super(200,200);
-		xSpeed = 2;
+		xSpeed = 3;
 		ySpeed = 1;
 	}
 
 	public Ball(int x, int y)
 	{
 		super(x,y);
-		xSpeed = 2;
+		xSpeed = 3;
 		ySpeed = 1;
 	}
 	//add the other Ball constructors
@@ -30,13 +30,13 @@ public class Ball extends Block implements Collidable
 	
 	public Ball(int x, int y, int w, int h){
 		super (x,y,w,h);
-		xSpeed = 2;
+		xSpeed = 3;
 		ySpeed = 1;
 	}
 	
 	public Ball(int x, int y, int w, int h, Color c){
 		super (x,y,w,h,c);
-		xSpeed = 2;
+		xSpeed = 3;
 		ySpeed = 1;
 	}
 	
@@ -97,7 +97,7 @@ public class Ball extends Block implements Collidable
 	
 	 public boolean didCollideLeft(Object obj){
 		 Paddle compare = (Paddle)obj;
-		 if((this.getX() <= compare.getX() + compare.getWidth()) && (this.getX()>=compare.getX()) &&//check if paddle is within bounds of x
+		 if((this.getX() <= compare.getX()) && //check if paddle is within bounds of x
 					((compare.getY() <= this.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) 
 							)){
 			return true;
@@ -106,15 +106,24 @@ public class Ball extends Block implements Collidable
 		 return false;
 	 }
 
-	 
 	 public boolean didCollideRight(Object obj){
 		 Paddle compare = (Paddle)obj;
-		 if((this.getX() <= compare.getX() + compare.getWidth()) && (this.getX() >= compare.getX()) &&//check if paddle is within bounds of x
-					((compare.getY() <= this.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) 
-							)){
-			return true;
+		 if(this.getX() >= compare.getX() + compare.getWidth() + Math.abs(this.getXSpeed())
+		 &&
+		 (this.getY() >= compare.getY() && 
+		 this.getY() <= compare.getY() + compare.getHeight() ||
+		 this.getY() + this.getHeight() >= compare.getY() &&
+		 this.getY() + this.getHeight() < compare.getY() + compare.getHeight())
+		 ){
+			if (this.getX() >= compare.getX() + compare.getWidth() - Math.abs(this.getXSpeed())){
+				//negative y
+				return true;
 			}
-		 
+			else{
+				//negative x
+				return false;
+			}
+		 }
 		 return false;
 	 }
 	 

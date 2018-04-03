@@ -24,7 +24,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private BufferedImage back;
 	private int leftScore = 0;
 	private int rightScore = 0;
-	
+
 
 	public Pong()
 	{
@@ -75,20 +75,14 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		
 		//scoring and reset
 		String score = "" + leftScore + "-" + rightScore;
-		
-		graphToBack.setColor(Color.RED);
 		graphToBack.drawString(score, 300, 10);
-		
 		if(!(ball.getX()>=10 && ball.getX()<=780))
 		{
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.drawString(score, 300, 10);
 			ball.setXSpeed(0);
 			ball.setYSpeed(0);
-			
-			graphToBack.setColor(Color.WHITE);
-			graphToBack.fillRect(300, 0, 100, 100);
-			
 			ball.draw(graphToBack, Color.WHITE);
-			
 			if (!(ball.getX()>=10)){
 				rightScore += 1;
 			}
@@ -96,14 +90,12 @@ public class Pong extends Canvas implements KeyListener, Runnable
 				leftScore += 1;
 			}
 			
-			graphToBack.setColor(Color.RED);
-			graphToBack.drawString(score, 300, 10);
 			ball.setPos(300, 300);
-			ball.setXSpeed(-2);
+			ball.setXSpeed(-1);
 			ball.setYSpeed(1);
 			
-			
-			
+			graphToBack.setColor(Color.RED);
+			graphToBack.drawString(score, 300, 10);
 		}
 
 		
