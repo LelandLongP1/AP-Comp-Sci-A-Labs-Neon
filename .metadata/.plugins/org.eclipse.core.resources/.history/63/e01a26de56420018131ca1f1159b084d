@@ -40,7 +40,7 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\caterpillar.jpg");
+    Picture caterpillar = new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\caterpillar.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -71,17 +71,10 @@ public class PictureTester
   
   public static void testMirrorArms()
   {
-    Picture snowman = new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\snowman.jpg");
+    Picture snowman = new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\snowman.jpg");
     snowman.explore();
     snowman.mirrorArms();
     snowman.explore();
-  }
-  
-  public static void testFixUnderWater(){
-	  Picture snowman = new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\water.jpg");
-	    snowman.explore();
-	    snowman.fixUnderwater();
-	    snowman.explore();
   }
   
   public static void testMirrorGull()
@@ -138,15 +131,15 @@ public class PictureTester
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
-    testFixUnderWater();
-    testMirrorVertical();
+    //testFixUnderwater();
+    //testMirrorVertical();
 	//testMirrorVerticalRightToLeft();
 	//testMirrorHorizontal();
     //testMirrorTemple();
-    testMirrorArms();
+    //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    //testCollage();
+    testCollage();
 	//testMyCollage();
     //testCopy();
     //testCopy2();

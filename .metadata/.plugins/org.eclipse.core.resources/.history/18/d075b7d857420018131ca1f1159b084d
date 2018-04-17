@@ -145,25 +145,83 @@ public class Picture extends SimplePicture
   
   public void fixUnderwater()
   {
-	  Pixel[][] pixels = this.getPixels2D();
-	    for (Pixel[] rowArray : pixels)
-	    {
-	      for (Pixel pixelObj : rowArray)
-	      {
-	        int red = Math.abs(pixelObj.getRed() - 21);
-	        int green = Math.abs(pixelObj.getGreen() - 163);
-	        int blue = Math.abs(pixelObj.getBlue() - 173);
-	        
-	        // (R, G, B) is (21, 163, 173)
-	        int difference = red + green + blue;
-	        if (difference > 21) {
-	          pixelObj.setRed(0);
-	          pixelObj.setGreen(0);
-	          pixelObj.setBlue(0);
-	        }
-	      }
-	    }
-	  
+    Pixel[][] pixels = this.getPixels2D();
+    
+    int redAverage = 0;
+    int greenAverage = 0;
+    int blueAverage = 0;
+    int totalPixels = 0;
+    
+    int maxRed = 0;
+    int minRed = 255;
+    int maxGreen = 0;
+    int minGreen = 255;
+    int maxBlue = 0;
+    int minBlue = 255;
+    
+    // takes a sample from a fish and finds the average color value and range of colors
+    for (int row = 26; row < 36; row++)
+    {
+        for (int col = 178; col < 198; col++)
+        {
+            totalPixels++;
+            
+            Pixel myPixel = pixels[row][col];
+            
+            redAverage += myPixel.getRed();
+            greenAverage += myPixel.getGreen();
+            blueAverage += myPixel.getBlue();
+            
+            if (myPixel.getRed() > maxRed) { maxRed = myPixel.getRed(); }
+            if (myPixel.getRed() < minRed) { minRed = myPixel.getRed(); }
+            if (myPixel.getGreen() > maxGreen) { maxGreen = myPixel.getGreen(); }
+            if (myPixel.getGreen() < minGreen) { minGreen = myPixel.getGreen(); }
+            if (myPixel.getBlue() > maxBlue) { maxBlue = myPixel.getBlue(); }
+            if (myPixel.getGreen() < minBlue) { minBlue = myPixel.getBlue(); }
+            
+        }
+    }
+    
+    redAverage = redAverage / totalPixels;
+    greenAverage = greenAverage / totalPixels;
+    blueAverage = blueAverage / totalPixels;
+    
+    Color averageColor = new Color(redAverage, greenAverage, blueAverage);
+    
+    // calculates the range
+    int redRange = (maxRed - minRed);
+    int greenRange = (maxGreen - minGreen);
+    int blueRange = (maxBlue - minBlue);
+    
+    int redDistance = redRange;
+    int greenDistance = greenRange;
+    int blueDistance = blueRange;
+    
+    double maxDistance = Math.sqrt(redDistance * redDistance +
+                                   greenDistance * greenDistance +
+                                   blueDistance * blueDistance);
+    
+    double tolerance = 1.7;
+    
+    
+    for (int row = 0; row < pixels.length; row++) 
+    {
+      for (int col = 0; col < pixels[0].length; col++) 
+      {
+          Pixel myPixel = pixels[row][col]; 
+          
+          boolean closeEnough = myPixel.colorDistance(averageColor) < maxDistance * tolerance; 
+          
+          if (closeEnough)
+          {
+              myPixel.setBlue(myPixel.getBlue() + 50);
+          }
+          else
+          {
+              myPixel.setBlue(myPixel.getBlue() - 50);
+          }
+      }
+    }
   }
   
   
