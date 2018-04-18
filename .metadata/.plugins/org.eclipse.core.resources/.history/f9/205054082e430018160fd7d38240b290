@@ -96,11 +96,6 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 		
-		if(keys[4] == true)
-		{
-			
-		}
-		
 		ship.draw(graphToBack);
 		//add in collision detection
 

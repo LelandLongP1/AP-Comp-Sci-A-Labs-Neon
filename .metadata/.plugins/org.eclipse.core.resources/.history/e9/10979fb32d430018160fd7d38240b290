@@ -14,7 +14,7 @@ public abstract class MovingThing implements Locatable
 
 	public MovingThing()
 	{
-		setPos(0,0);
+		
 	}
 
 	public MovingThing(int x, int y)

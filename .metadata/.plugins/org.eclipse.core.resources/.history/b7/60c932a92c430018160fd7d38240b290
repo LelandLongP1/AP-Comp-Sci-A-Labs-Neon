@@ -38,7 +38,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		keys = new boolean[5];
 
 		//instantiate other stuff
-		Ship ship = new Ship(400,450,5);
+		Ship ship = new Ship(10,10,10);
 		
 
 		this.addKeyListener(this);
@@ -94,11 +94,6 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if(keys[3] == true)
 		{
 			ship.move("DOWN");
-		}
-		
-		if(keys[4] == true)
-		{
-			
 		}
 		
 		ship.draw(graphToBack);
