@@ -31,7 +31,7 @@ public class Ship extends MovingThing
 		speed=s;
 		try
 		{
-			image = ImageIO.read(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\ship.jpg"));
+			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\ship.jpg"));
 		}
 		catch(Exception e)
 		{
@@ -59,6 +59,6 @@ public class Ship extends MovingThing
 
 	public String toString()
 	{
-		return super.toString() + getSpeed();
+		return super.toString() + " " + getSpeed();
 	}
 }

@@ -57,17 +57,19 @@ public abstract class MovingThing implements Locatable
 
 	public void move(String direction)
 	{
-		if(direction.equals("LEFT"))
-	      setX(getX()-getSpeed());
-		
-		if(direction.equals("RIGHT"))
-		      setX(getX()+getSpeed());
-		
-		if(direction.equals("UP"))
-		      setX(getY()+getSpeed());
-		
-		if(direction.equals("DOWN"))
-		      setX(getY()-getSpeed());
+		if(direction.equals("LEFT")){
+            setX(getX()-getSpeed());
+        }
+        else if(direction.equals("RIGHT")){
+            setX(getX()+getSpeed());
+        }
+        else if(direction.equals("UP")){
+            setY(getY()-getSpeed());
+        }
+        else if(direction.equals("DOWN")){
+            setY(getY()+getSpeed());
+        }
+
       //add more code to complete the move method
 	}
 

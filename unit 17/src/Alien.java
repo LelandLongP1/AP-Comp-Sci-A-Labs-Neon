@@ -31,7 +31,7 @@ public class Alien extends MovingThing
 		speed=s;
 		try
 		{
-			image = ImageIO.read(new File("alien.jpg"));
+			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\alien.JPG"));
 		}
 		catch(Exception e)
 		{
@@ -41,12 +41,13 @@ public class Alien extends MovingThing
 
 	public void setSpeed(int s)
 	{
+		speed = s;
 	   //add code
 	}
 
 	public int getSpeed()
 	{
-	   return 0;
+	   return speed;
 	}
 
 	public void draw( Graphics window )
@@ -56,6 +57,6 @@ public class Alien extends MovingThing
 
 	public String toString()
 	{
-		return "";
+		return super.toString() + " " + getSpeed();
 	}
 }
