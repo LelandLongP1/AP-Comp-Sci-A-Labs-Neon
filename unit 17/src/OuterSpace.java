@@ -37,13 +37,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		keys = new boolean[5];
 
 		//instantiate other stuff
-		ship = new Ship(400,450,5);
+		ship = new Ship(400,450,2);
 		
-		 alienOne = (new Alien(250,50,2));
-         alienTwo = (new Alien(450,50,2));
-		 ammo = new Ammo();
+		alienOne = (new Alien(250,50,2));
+        alienTwo = (new Alien(450,50,2));
+		ammo = new Ammo();
+        ammo.setPos(900, 600);
         
-
 		this.addKeyListener(this);
 		new Thread(this).start();
 
@@ -77,40 +77,53 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
 		
+		
+		
+		
 
-		if(keys[0] == true)
+		if(ship.getX() >= 0 && keys[0] == true)
 		{
 			ship.move("LEFT");
 		}
 
 		//add code to move stuff
-		if(keys[1] == true)
+		if(ship.getX() <= 710 && keys[1] == true)
 		{
 			ship.move("RIGHT");
 		}
 		
-		if(keys[2] == true)
+		if(ship.getY() >= 0 && keys[2] == true)
 		{
 			ship.move("UP");
 		}
 		
-		if(keys[3] == true)
+		if(ship.getY() <= 480 && keys[3] == true)
 		{
 			ship.move("DOWN");
 		}
 		
 		if(keys[4] == true)
 		{
-			 Ammo shot = new Ammo(ship.getX()+28, ship.getY(), 5);
+			
+			 ammo = new Ammo(ship.getX() + 35, ship.getY()-20, 3);
+	
 			 keys[4]=false;
-			 shot.draw(graphToBack);
+			 
 		}
 		
 		
 		//add in collision detection
 		
+		//use two forloops later
+		if (!(ammo.getY() >= alienOne.getY() + 10 && ammo.getY() <= alienOne.getY() - 20 && ammo.getX() >= alienOne.getX()- 50 && ammo.getX() <= alienOne.getX() + 50 )){
+			//remove from matrix after getting hit to disappear permanently
+			alienOne.draw(graphToBack);
+			
+		}
+		
+		ammo.move("UP");
+		ammo.draw(graphToBack);
 		ship.draw(graphToBack);
-		alienOne.draw(graphToBack);
 		alienTwo.draw(graphToBack);
 		
 		twoDGraph.drawImage(back, null, 0, 0);
@@ -161,10 +174,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			keys[3] = false;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		/*if (e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
 			keys[4] = false;
-		}
+		}*/
 		repaint();
 	}
 
