@@ -26,6 +26,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private ArrayList<Alien> aliens;
 	private ArrayList<Ammo> shots;
 	
+	//my variables
+	//private AlienHorde swarm;
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -43,6 +45,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
         alienTwo = (new Alien(450,50,2));
 		ammo = new Ammo();
         ammo.setPos(900, 600);
+        
+        AlienHorde swarm = new AlienHorde(18);
+        aliens = swarm.getSwarm();
+        
+        //swarm = new AlienHorde(5);
+        //System.out.println(swarm.size());
+        
+        
         
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -115,16 +125,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//add in collision detection
 		
 		//use two forloops later
-		if (!(ammo.getY() >= alienOne.getY() + 10 && ammo.getY() <= alienOne.getY() - 20 && ammo.getX() >= alienOne.getX()- 50 && ammo.getX() <= alienOne.getX() + 50 )){
+		/*if (!(ammo.getY() <= alienOne.getY() + 10 && ammo.getY() >= alienOne.getY() - 20 && ammo.getX() >= alienOne.getX() && ammo.getX() <= alienOne.getX() + 60) ){
 			//remove from matrix after getting hit to disappear permanently
 			alienOne.draw(graphToBack);
 			
-		}
+		}*/
 		
 		ammo.move("UP");
 		ammo.draw(graphToBack);
 		ship.draw(graphToBack);
-		alienTwo.draw(graphToBack);
+		//alienTwo.draw(graphToBack);
+		
+		for (int i = 0 ; i < aliens.size(); i++){
+			aliens.get(i).draw(graphToBack);
+		}
 		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}

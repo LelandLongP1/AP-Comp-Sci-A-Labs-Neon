@@ -1,0 +1,70 @@
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+
+public class AlienHorde {
+	ArrayList <Alien> swarm = new ArrayList<Alien>();
+	private Image image;
+	
+	public AlienHorde(){
+		
+	}
+	
+	public AlienHorde(int count){
+		int check = 0;
+		for (int i = 0 ; i < count * 100 && check < count; i += 100){
+			if (!(i > 570)){
+				swarm.add(new Alien (i, 50, 3));
+				check ++;
+			}
+			else {
+				i = 0;
+				swarm.add(new Alien(i + 100, 200, 3));
+				check ++;
+			}
+		}
+	
+		
+		
+		try
+		{
+			image = ImageIO.read(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\alien.JPG"));
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		
+		
+	}
+	
+	public ArrayList<Alien> getSwarm(){
+		return swarm;
+   
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}//end class
