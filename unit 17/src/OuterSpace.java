@@ -15,13 +15,20 @@ import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
 	private Ship ship;
-	private Alien alienOne;
-	private Alien alienTwo;
+	//private Alien alienOne;
+	//private Alien alienTwo;
 	private Ammo ammo;
+	private boolean gameOver = false;
+	private int lives = 5;
+	private Ammo enemyBullet = new Ammo(1000,1000,1);
+	//private boolean timerOn = true;
+	
 	
 	private ArrayList<Alien> aliens;
 	private ArrayList<Ammo> shots;
@@ -60,6 +67,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		new Thread(this).start();
 
 		setVisible(true);
+		
+		
 	}
 
    public void update(Graphics window)
@@ -99,7 +108,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 
 		//add code to move stuff
-		if(ship.getX() <= 570 && keys[1] == true)
+		if(ship.getX() <= 720 && keys[1] == true)
 		{
 			ship.move("RIGHT");
 		}
@@ -118,7 +127,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			
 			 shots.add(new Ammo(ship.getX() + 35, ship.getY()-20, 3));
-	
+			 int random = (int) (Math.random() * aliens.size());
+			 enemyBullet = new Ammo(aliens.get(random).getX(),aliens.get(random).getY(),1);
+			 
 			 keys[4]=false;
 			 
 		}
@@ -131,6 +142,11 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			enemies.draw(graphToBack);
 			int temp = enemies.getY();
 			enemies.move("RIGHT");
+			
+			
+			
+			
+			
 			 if(enemies.getX() <= 1000)
              {
                  if(enemies.getX() > 900)
@@ -150,8 +166,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			}
 		}	
 			
-			
-			
+		
+		
+		
+		
+		
+		
 		for (Ammo bullets: shots){
 			bullets.move("UP");
 			bullets.draw(graphToBack); 
@@ -164,10 +184,54 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
             
          
+		if (lives > 0){
+			ship.draw(graphToBack);
+		}
+	
+		
+		
+		
+		
+		
 			
-		ship.draw(graphToBack);
+		//Timer timer = new Timer ();
+		
+		//TimerTask task = new TimerTask(){
+			//public void run(){
+				//int random = (int) (Math.random() * aliens.size());
+				//Ammo enemyBullet = new Ammo(aliens.get(random).getX(),aliens.get(random).getY(),1);
+				//if (enemyBullet.getY() < 550){
+				
+				enemyBullet.draw(graphToBack);
+				enemyBullet.move("DOWN"); 
+				
+				//}
+				if ((ship.getY() <= enemyBullet.getY() + 10 && ship.getY() >= enemyBullet.getY() - 20 && ship.getX() >= enemyBullet.getX() && ship.getX() <= enemyBullet.getX() + 60) ){
+					//remove from matrix after getting hit to disappear permanently
+					lives = lives - 1;
+				}
+				
+			//}
+		//};
+		
+		//if (timerOn == true){
+			//timer.scheduleAtFixedRate(task,1000,1000);
+			//timerOn = false;
+		//}
+			
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.drawString("Lives: " + lives, 700, 550);
 		//for (int i = 0 ; i < aliens.size(); i++){
 			//aliens.get(i).draw(graphToBack);
 		//}
