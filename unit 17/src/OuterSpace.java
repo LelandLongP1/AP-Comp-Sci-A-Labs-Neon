@@ -41,13 +41,15 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//instantiate other stuff
 		ship = new Ship(400,450,2);
 		
-		alienOne = (new Alien(250,50,2));
-        alienTwo = (new Alien(450,50,2));
-		ammo = new Ammo();
-        ammo.setPos(900, 600);
+		//alienOne = (new Alien(250,50,2));
+        //alienTwo = (new Alien(450,50,2));
+		//ammo = new Ammo();
+        //ammo.setPos(900, 600);
         
-        AlienHorde swarm = new AlienHorde(18);
+        AlienHorde swarm = new AlienHorde(8);
         aliens = swarm.getSwarm();
+        
+        shots = new ArrayList<Ammo>();
         
         //swarm = new AlienHorde(5);
         //System.out.println(swarm.size());
@@ -97,7 +99,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 
 		//add code to move stuff
-		if(ship.getX() <= 710 && keys[1] == true)
+		if(ship.getX() <= 570 && keys[1] == true)
 		{
 			ship.move("RIGHT");
 		}
@@ -115,7 +117,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if(keys[4] == true)
 		{
 			
-			 ammo = new Ammo(ship.getX() + 35, ship.getY()-20, 3);
+			 shots.add(new Ammo(ship.getX() + 35, ship.getY()-20, 3));
 	
 			 keys[4]=false;
 			 
@@ -125,20 +127,50 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//add in collision detection
 		
 		//use two forloops later
-		/*if (!(ammo.getY() <= alienOne.getY() + 10 && ammo.getY() >= alienOne.getY() - 20 && ammo.getX() >= alienOne.getX() && ammo.getX() <= alienOne.getX() + 60) ){
-			//remove from matrix after getting hit to disappear permanently
-			alienOne.draw(graphToBack);
+		for (Alien enemies: aliens){
+			enemies.draw(graphToBack);
+			int temp = enemies.getY();
+			enemies.move("RIGHT");
+			 if(enemies.getX() <= 1000)
+             {
+                 if(enemies.getX() > 900)
+                     enemies.setX(-20);
+                 	 
+             }
+			for (Ammo bullets: shots){
+				if (!(bullets.getY() <= enemies.getY() + 10 && bullets.getY() >= enemies.getY() - 20 && bullets.getX() >= enemies.getX() && bullets.getX() <= enemies.getX() + 60) ){
+					//remove from matrix after getting hit to disappear permanently
+					enemies.draw(graphToBack);
+					
+				}
+				else {
+					aliens.remove(enemies);
+					shots.remove(bullets);
+				}
+			}
+		}	
 			
-		}*/
-		
-		ammo.move("UP");
-		ammo.draw(graphToBack);
-		ship.draw(graphToBack);
-		//alienTwo.draw(graphToBack);
-		
-		for (int i = 0 ; i < aliens.size(); i++){
-			aliens.get(i).draw(graphToBack);
+			
+			
+		for (Ammo bullets: shots){
+			bullets.move("UP");
+			bullets.draw(graphToBack); 
+			if(bullets.getY()<=0)
+             {
+                 shots.remove(bullets);
+             }
 		}
+		
+		
+            
+         
+			
+		ship.draw(graphToBack);
+		
+		
+		//for (int i = 0 ; i < aliens.size(); i++){
+			//aliens.get(i).draw(graphToBack);
+		//}
 		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
