@@ -26,6 +26,7 @@ public class Picture extends SimplePicture
      * child constructors always call a parent constructor 
      */
     super();  
+    System.out.println("Leland Long\n4/24/18\nPeriod 1\nMauro");
   }
   
   /**
@@ -36,6 +37,7 @@ public class Picture extends SimplePicture
   {
     // let the parent class handle this fileName
     super(fileName);
+    System.out.println("Leland Long\n4/24/18\nPeriod 1\nMauro");
   }
   
   /**
@@ -47,6 +49,7 @@ public class Picture extends SimplePicture
   {
     // let the parent class handle this width and height
     super(width,height);
+    System.out.println("Leland Long\n4/24/18\nPeriod 1\nMauro");
   }
   
   /**
@@ -58,6 +61,7 @@ public class Picture extends SimplePicture
   {
     // let the parent class do the copy
     super(copyPicture);
+    System.out.println("Leland Long\n4/24/18\nPeriod 1\nMauro");
   }
   
   /**
@@ -67,6 +71,7 @@ public class Picture extends SimplePicture
   public Picture(BufferedImage image)
   {
     super(image);
+    System.out.println("Leland Long\n4/24/18\nPeriod 1\nMauro");
   }
   
   ////////////////////// methods ///////////////////////////////////////
@@ -432,6 +437,35 @@ public class Picture extends SimplePicture
   }
     
 }
+  
+  
+  
+  
+  
+  public void blur(int x, int y, int width, int height){
+	 Pixel[][] pixels = this.getPixels2D();
+	 Pixel pixelObj;
+	
+	 for (int rows = x; rows <= height; rows++){
+		 for (int columns = y; columns <= width; columns ++){ 
+			 int averageRed = 0;
+			 int averageGreen = 0;
+			 int averageBlue = 0;
+			 pixelObj = pixels[rows][columns];
+			 averageRed = (pixels[rows+1][columns].getRed() + pixels[rows-1][columns].getRed() + pixels[rows][columns-1].getRed() + pixels[rows][columns+1].getRed()   + pixels[rows+1][columns+1].getRed() + pixels[rows-1][columns+1].getRed() + pixels[rows-1][columns-1].getRed() + pixels[rows+1][columns-1].getRed() ) / 8;
+			 //pixelObj.setRed(averageRed);
+			 averageBlue = (pixels[rows+1][columns].getBlue() + pixels[rows-1][columns].getBlue() + pixels[rows][columns-1].getBlue() + pixels[rows][columns+1].getBlue()    + pixels[rows+1][columns+1].getBlue() + pixels[rows-1][columns+1].getBlue() + pixels[rows-1][columns-1].getBlue() + pixels[rows+1][columns-1].getBlue()) / 8;
+			 //pixelObj.setBlue(averageBlue);
+			 averageGreen = (pixels[rows+1][columns].getGreen() + pixels[rows-1][columns].getGreen() + pixels[rows][columns-1].getGreen() + pixels[rows][columns+1].getGreen() + pixels[rows+1][columns+1].getGreen() + pixels[rows-1][columns+1].getGreen() + pixels[rows-1][columns-1].getGreen() + pixels[rows+1][columns-1].getGreen()) /8;
+			 //pixelObj.setGreen(averageGreen);
+			 pixelObj.setRed(averageRed);
+			 pixelObj.setBlue(averageBlue);
+			 pixelObj.setGreen(averageGreen);
+			 
+		 }
+	 }
+
+  }
   
  
 
