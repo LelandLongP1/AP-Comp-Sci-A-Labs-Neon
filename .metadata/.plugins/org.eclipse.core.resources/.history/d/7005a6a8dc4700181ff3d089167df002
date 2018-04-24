@@ -446,8 +446,8 @@ public class Picture extends SimplePicture
 	 Pixel[][] pixels = this.getPixels2D();
 	 Pixel pixelObj;
 	
-	 for (int rows = y; rows <= height; rows++){
-		 for (int columns = x; columns <= width; columns ++){ 
+	 for (int rows = x; rows <= height; rows++){
+		 for (int columns = y; columns <= width; columns ++){ 
 			 int averageRed = 0;
 			 int averageGreen = 0;
 			 int averageBlue = 0;
