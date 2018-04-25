@@ -18,13 +18,14 @@ public class AlienHorde {
 		for (int i = 0; i< count * 100; i += 100){
 			swarm.add(new Alien (i, 50, 1));
 			swarm.add(new Alien (i, 150, 1));
+			swarm.add(new Alien (i,250,1));
 		}
 	
 		
 		
 		try
 		{
-			image = ImageIO.read(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\alien.JPG"));
+			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\alien.JPG"));
 		}
 		catch(Exception e)
 		{

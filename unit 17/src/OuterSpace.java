@@ -7,16 +7,21 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Canvas;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
@@ -25,16 +30,15 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	//private Alien alienTwo;
 	private Ammo ammo;
 	private boolean gameOver = false;
-	private int lives = 5;
-	private Ammo enemyBullet = new Ammo(1000,1000,1);
-	//private boolean timerOn = true;
-	
-	
+	private int lives = 10;
+	private ArrayList <Ammo> enemyBullet;
+	private BossKanye boss;
+	private int bossHealth = 40;
+	private boolean bossVisible;
 	private ArrayList<Alien> aliens;
 	private ArrayList<Ammo> shots;
 	
-	//my variables
-	//private AlienHorde swarm;
+	
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -47,19 +51,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other stuff
 		ship = new Ship(400,450,2);
-		
 		//alienOne = (new Alien(250,50,2));
         //alienTwo = (new Alien(450,50,2));
-		//ammo = new Ammo();
-        //ammo.setPos(900, 600);
-        
         AlienHorde swarm = new AlienHorde(8);
-        aliens = swarm.getSwarm();
-        
+        aliens = swarm.getSwarm();        
         shots = new ArrayList<Ammo>();
-        
-        //swarm = new AlienHorde(5);
-        //System.out.println(swarm.size());
+        enemyBullet = new ArrayList<Ammo>();
+        boss = new BossKanye(250,0);
+        bossVisible = false;
         
         
         
@@ -98,9 +97,22 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
 		
+		/*Image image;
+		try
+		{
+			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\kanyebackground.jpg"));
+			graphToBack.drawImage(image,0,0,800,600,null);
+		
+		}
+		
+		catch(Exception e)
+		{
+			//feel free to do something here
+		}*/
 		
 		
 		
+		//*****************************************[CONTROLS]***********************************************************
 
 		if(ship.getX() >= 0 && keys[0] == true)
 		{
@@ -127,25 +139,37 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			
 			 shots.add(new Ammo(ship.getX() + 35, ship.getY()-20, 3));
-			 int random = (int) (Math.random() * aliens.size());
-			 enemyBullet = new Ammo(aliens.get(random).getX(),aliens.get(random).getY(),1);
+			 
+			 if (aliens.size() > 0){
+			 	for (int i = 0; i < 5; i ++){
+			 		int random = (int) (Math.random() * aliens.size());
+			 		enemyBullet.add(new Ammo(aliens.get(random).getX() + aliens.get(random).getSpeed(),aliens.get(random).getY(),1));
+			 		}
+			 	}
+			 else{
+				 for (int i = 0; i < 3; i++){
+					 int random = (int) (Math.random() * 300);
+					 if (random % 2 != 0){
+						 enemyBullet.add(new Ammo(boss.getX() + 50 + random,boss.getY(),2));
+					 }
+					 else{
+						 enemyBullet.add(new Ammo(boss.getX() + 50 - random,boss.getY(),2));
+					 }	
+				 
+				 }
+				 
+			 }
 			 
 			 keys[4]=false;
 			 
 		}
 		
 		
-		//add in collision detection
-		
-		//use two forloops later
+		//*****************************************[ALIEN BEHAVIOR]***********************************************************
 		for (Alien enemies: aliens){
 			enemies.draw(graphToBack);
 			int temp = enemies.getY();
 			enemies.move("RIGHT");
-			
-			
-			
-			
 			
 			 if(enemies.getX() <= 1000)
              {
@@ -154,8 +178,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                  	 
              }
 			for (Ammo bullets: shots){
-				if (!(bullets.getY() <= enemies.getY() + 10 && bullets.getY() >= enemies.getY() - 20 && bullets.getX() >= enemies.getX() && bullets.getX() <= enemies.getX() + 60) ){
-					//remove from matrix after getting hit to disappear permanently
+				if (!(bullets.getY() <= enemies.getY() + 10 && bullets.getY() >= enemies.getY() - 20 
+						&& bullets.getX() >= enemies.getX() 
+						&& bullets.getX() <= enemies.getX() + 60) ){
+					
 					enemies.draw(graphToBack);
 					
 				}
@@ -165,76 +191,120 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 				}
 			}
 		}	
-			
 		
-		
-		
-		
-		
+		if (aliens.size() <= 0 && bossHealth > 0){
+			bossVisible = true;
+			boss.draw(graphToBack);
+		}
+		else {
+			bossVisible = false;
+		}
 		
 		for (Ammo bullets: shots){
+			if (boss.getY() <= bullets.getY() + 10 && boss.getY() + 300 >= bullets.getY() 
+				&& boss.getX() + 300 >= bullets.getX() && boss.getX() <= bullets.getX() 
+				&& bullets.getHit() == true && bossVisible == true){
+					graphToBack.setColor(Color.BLACK);
+					graphToBack.drawString("Health: " + bossHealth, 100, 100);
+					bossHealth = bossHealth - 1;
+					graphToBack.setColor(Color.WHITE);
+					graphToBack.drawString("Health: " + bossHealth, 100, 100);
+					bullets.setHit();
+					shots.remove(bullets);
+					
+				}
+		}
+		
+		//*****************************************[BULLETS]***********************************************************
+		for (Ammo bullets: shots){
 			bullets.move("UP");
-			bullets.draw(graphToBack); 
+			bullets.draw2(graphToBack,Color.YELLOW); 
 			if(bullets.getY()<=0)
              {
                  shots.remove(bullets);
              }
 		}
 		
+		for (Ammo bullets: enemyBullet){
+			bullets.move("DOWN");
+			 int random = (int) (Math.random() * 3);
+			 if (random == 1){
+				 bullets.move("LEFT");
+			 }
+			 else{
+				 bullets.move("RIGHT");
+			 }
+			if (aliens.size() <= 0){
+			 	int random2= (int) (Math.random() * 5);
+			 	if (random2 == 1 ){
+			 		bullets.draw2(graphToBack,Color.BLUE);
+			 	}
+			 	else if (random2 == 2){
+			 		bullets.draw2(graphToBack,Color.RED);
+			 	}	
+			 	else if (random2 == 3){
+			 		bullets.draw2(graphToBack,Color.GREEN);
+			 	}	
+			 	else if (random2 == 4){
+			 		bullets.draw2(graphToBack,Color.CYAN);
+			 	}	
+			 	else if (random2 == 0){
+			 		bullets.draw2(graphToBack,Color.MAGENTA);
+			 	}	
+			}
+			else {
+				bullets.draw2(graphToBack, Color.BLUE);
+			}
 		
-            
-         
+			
+			if(bullets.getY()>=750)
+             {
+                 enemyBullet.remove(bullets);
+             }		
+		}
+		
+		
+        for (Ammo bullets: enemyBullet){
+			if ((ship.getY() <= bullets.getY() + 10 && ship.getY() >= bullets.getY() - 20 
+					&& ship.getX() + 60 >= bullets.getX() && ship.getX() <= bullets.getX()) 
+					&& bullets.getHit() == true){
+					
+			lives = lives - 1;
+			bullets.setHit();
+			enemyBullet.remove(bullets);
+			}
+		}
+        
+        
+         //*****************************************[DEATH]***********************************************************
 		if (lives > 0){
 			ship.draw(graphToBack);
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.drawString("Lives: " + lives, 700, 550);
+
 		}
+		else {
+			graphToBack.setColor(Color.BLACK);
+			graphToBack.drawString("Lives: " + lives, 700, 550);
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.drawString("Game Over", 700, 550);
+
+		}
+		
+		if (bossHealth > 0 && aliens.size() <= 0 && bossVisible == true){
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.drawString("Health: " + bossHealth, 100, 100);
+		}
+		else if (bossHealth <= 0 && aliens.size() <= 0 && bossVisible == false){
+			graphToBack.setColor(Color.BLACK);
+			graphToBack.drawString("Health: " + bossHealth, 100, 100);
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.drawString("You Win!", 370, 200);
+		}
+		
 	
+		//********************************************[END]**************************************************************
 		
-		
-		
-		
-		
-			
-		//Timer timer = new Timer ();
-		
-		//TimerTask task = new TimerTask(){
-			//public void run(){
-				//int random = (int) (Math.random() * aliens.size());
-				//Ammo enemyBullet = new Ammo(aliens.get(random).getX(),aliens.get(random).getY(),1);
-				//if (enemyBullet.getY() < 550){
-				
-				enemyBullet.draw(graphToBack);
-				enemyBullet.move("DOWN"); 
-				
-				//}
-				if ((ship.getY() <= enemyBullet.getY() + 10 && ship.getY() >= enemyBullet.getY() - 20 && ship.getX() >= enemyBullet.getX() && ship.getX() <= enemyBullet.getX() + 60) ){
-					//remove from matrix after getting hit to disappear permanently
-					lives = lives - 1;
-				}
-				
-			//}
-		//};
-		
-		//if (timerOn == true){
-			//timer.scheduleAtFixedRate(task,1000,1000);
-			//timerOn = false;
-		//}
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		graphToBack.setColor(Color.WHITE);
-		graphToBack.drawString("Lives: " + lives, 700, 550);
-		//for (int i = 0 ; i < aliens.size(); i++){
-			//aliens.get(i).draw(graphToBack);
-		//}
 		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
