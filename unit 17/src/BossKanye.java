@@ -24,7 +24,7 @@ public class BossKanye extends MovingThing {
 		speed=s;
 		try
 		{
-			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\boss kanye.gif"));
+			image = ImageIO.read(new File("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\tempura.png"));
 		}
 		catch(Exception e)
 		{

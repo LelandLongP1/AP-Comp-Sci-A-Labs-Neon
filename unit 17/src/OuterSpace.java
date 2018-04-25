@@ -30,7 +30,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	//private Alien alienTwo;
 	private Ammo ammo;
 	private boolean gameOver = false;
-	private int lives = 10;
+	private int lives = 15;
 	private ArrayList <Ammo> enemyBullet;
 	private BossKanye boss;
 	private int bossHealth = 40;
@@ -100,7 +100,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		/*Image image;
 		try
 		{
-			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\kanyebackground.jpg"));
+			image = ImageIO.read(new File("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 17\\src\\winscreen.png"));
 			graphToBack.drawImage(image,0,0,800,600,null);
 		
 		}
@@ -138,9 +138,11 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if(keys[4] == true)
 		{
 			
-			 shots.add(new Ammo(ship.getX() + 35, ship.getY()-20, 3));
-			 
-			 if (aliens.size() > 0){
+			if (gameOver == false){
+				shots.add(new Ammo(ship.getX() + 35, ship.getY()-20, 3));
+			}
+			
+			if (aliens.size() > 0){
 			 	for (int i = 0; i < 5; i ++){
 			 		int random = (int) (Math.random() * aliens.size());
 			 		enemyBullet.add(new Ammo(aliens.get(random).getX() + aliens.get(random).getSpeed(),aliens.get(random).getY(),1));
@@ -288,6 +290,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			graphToBack.drawString("Lives: " + lives, 700, 550);
 			graphToBack.setColor(Color.WHITE);
 			graphToBack.drawString("Game Over", 700, 550);
+			gameOver = true;
 
 		}
 		
@@ -300,6 +303,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			graphToBack.drawString("Health: " + bossHealth, 100, 100);
 			graphToBack.setColor(Color.WHITE);
 			graphToBack.drawString("You Win!", 370, 200);
+			
 		}
 		
 	
