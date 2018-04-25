@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="copy" key="selection"/>
+		<item value="gameOver" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="gameOver"/>
 			<item value="copy"/>
 			<item value="edge"/>
 			<item value="detect"/>
@@ -15,7 +16,6 @@
 			<item value="2d"/>
 			<item value="beach"/>
 			<item value="selected"/>
-			<item value="values"/>
 		</list>
 		<list key="replacehistory">
 			<item value="cards"/>
