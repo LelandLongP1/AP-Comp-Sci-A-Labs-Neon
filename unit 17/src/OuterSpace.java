@@ -37,12 +37,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private boolean bossVisible;
 	private ArrayList<Alien> aliens;
 	private ArrayList<Ammo> shots;
-	
-	
-
 	private boolean[] keys;
 	private BufferedImage back;
-
+	
+	
+	/**
+	 * instantiates the objects and arrayLists for the game
+	 * detects player input and sends it to methods to be interpreted 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public OuterSpace()
 	{
 		setBackground(Color.black);
@@ -69,12 +77,25 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		
 	}
-
+	
+	/**
+	 * constantly calls and updates the game to simulate movement 
+	 *
+	 * 
+	 * @param  Graphics window which opens a new window for the game to be played on
+	 * @see    changes to the window which appears as movement along the screen, constantly updating and adjusting for new changes
+	 */
    public void update(Graphics window)
    {
 	   paint(window);
    }
-
+   
+   /**
+    * draws the objects on screen and plays the game
+    *
+    * @param  	Graphics window creates a double buffering window for the animations
+    * @see     	The game being played
+    */
 	public void paint( Graphics window )
 	{
 		//set up the double buffering to make the game animation nice and smooth
@@ -313,7 +334,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 
-
+	/**
+	 * senses for player input and repaints the window with the changes: up, down, left, right
+	 *
+	 * @param  keyEvent E is the player's input
+	 * 
+	 */
 	public void keyPressed(KeyEvent e)
 	{
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
@@ -339,7 +365,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		repaint();
 		
 	}
-
+	
+	/**
+	 * senses when the player stops inputting a key
+	 *
+	 * @param  KeyEvent e is when a change in input is detected
+	 * 
+	 */
 	public void keyReleased(KeyEvent e)
 	{
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
@@ -364,12 +396,21 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}*/
 		repaint();
 	}
-
+	
+	/**
+	 * another method to detect input 
+	 * @param  KeyEvent e detects when a key is typed
+	 *
+	 */
 	public void keyTyped(KeyEvent e)
 	{
 		
 	}
 
+	/**
+	 * constantly refreshes the window with new changes
+	 * @see         the game moving 
+	 */
    public void run()
    {
    	try

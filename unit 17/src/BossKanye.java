@@ -17,7 +17,20 @@ public class BossKanye extends MovingThing {
 	{
 		this(x,y,0);
 	}
-
+	
+	/**
+	 * instantiates the boss of the game by checking for his image and setting his speed and position
+	 *  
+	 *  
+	 *  
+	 *
+	 * @param  x position
+	 * @param  y position
+	 * @param  s speed
+	 * 
+	 * 
+	 * 
+	 */
 	public BossKanye(int x, int y, int s)
 	{
 		super(x, y);

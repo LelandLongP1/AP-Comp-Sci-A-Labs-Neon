@@ -14,6 +14,13 @@ public class AlienHorde {
 		
 	}
 	
+	/**
+	 * creates three rows of aliens where each row is the size that the player instantiates the object with 
+	 *
+	 * @param  count  the size of each row (amount of aliens)
+	 * 
+	 *
+	 */
 	public AlienHorde(int count){
 		for (int i = 0; i< count * 100; i += 100){
 			swarm.add(new Alien (i, 50, 1));
@@ -36,6 +43,12 @@ public class AlienHorde {
 		
 	}
 	
+	/**
+	 *returns the arrayList of aliens created by the constructor
+	 *
+	 * @return      ArrayList <Alien> (the aliens and their position)
+	 *
+	 */
 	public ArrayList<Alien> getSwarm(){
 		return swarm;
    
