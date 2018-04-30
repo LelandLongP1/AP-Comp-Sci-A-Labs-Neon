@@ -26,7 +26,7 @@ import javax.imageio.ImageIO;
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
 	private Ship ship;
-	//private Alien alienOne;
+	private Alien alienOne;
 	//private Alien alienTwo;
 	private Ammo ammo;
 	private boolean gameOver = false;
@@ -59,7 +59,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other stuff
 		ship = new Ship(400,450,2);
-		//alienOne = (new Alien(250,50,2));
+		alienOne = (new Alien(250,0,2));
         //alienTwo = (new Alien(450,50,2));
         AlienHorde swarm = new AlienHorde(8);
         aliens = swarm.getSwarm();        
@@ -238,6 +238,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 				}
 		}
 		
+		
+		
 		//*****************************************[BULLETS]***********************************************************
 		for (Ammo bullets: shots){
 			bullets.move("UP");
@@ -324,7 +326,6 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			graphToBack.drawString("Health: " + bossHealth, 100, 100);
 			graphToBack.setColor(Color.WHITE);
 			graphToBack.drawString("You Win!", 370, 200);
-			
 		}
 		
 	
