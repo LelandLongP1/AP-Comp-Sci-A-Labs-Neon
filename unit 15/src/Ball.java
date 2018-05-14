@@ -36,7 +36,7 @@ public class Ball extends Block implements Collidable
 	
 	public Ball(int x, int y, int w, int h, Color c){
 		super (x,y,w,h,c);
-		xSpeed = 2;
+		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
@@ -134,7 +134,7 @@ public class Ball extends Block implements Collidable
 	 
 	 public boolean didCollideTop(Object obj){
 		 Block block = (Block)obj;
-			if(getY() <= block.getY() + block.getHeight() && getY() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
+			if(getY() <= block.getY() + block.getHeight() && getY() + getHeight() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
 			{
 				return true;
 			}

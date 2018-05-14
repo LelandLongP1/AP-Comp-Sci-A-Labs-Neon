@@ -26,6 +26,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private int leftScore = 0;
 	private int rightScore = 0;
 	private Level levelOne;
+	private Level levelTwo;
 	private ArrayList <Brick> bricks;
 	
 
@@ -35,9 +36,10 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		ball = new Ball(300,300,10,10,Color.BLACK);
 		leftPaddle = new Paddle(300,300,30,30,5);
 		//rightPaddle = new Paddle(775,300,10,50,5);
-		levelOne = new Level(0,0,50,20,Color.BLUE);
+		levelOne = new Level(0,0,200,20,Color.BLUE);
+		levelTwo = new Level(0,0,50,20,Color.RED);
 		bricks = levelOne.getLevel();
-
+		
 		keys = new boolean[4];
 
     
@@ -109,8 +111,12 @@ public class Pong extends Canvas implements KeyListener, Runnable
 			
 			
 			ball.setPos(550, 300);
+			
 			ball.setXSpeed(1);
-			ball.setYSpeed(-1);
+			
+			
+					
+			ball.setYSpeed(1);
 			
 			
 			
@@ -190,7 +196,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		}
 
 
-
+		if (bricks.size() <= 0){
+			bricks = levelTwo.getLevel();
+		}
 
 
 
