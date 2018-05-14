@@ -96,37 +96,71 @@ public class Ball extends Block implements Collidable
 	
 	
 	 public boolean didCollideLeft(Object obj){
-		 Paddle compare = (Paddle)obj;
-		 if((this.getX() <= compare.getX() + compare.getWidth()) && (this.getX()>=compare.getX()) &&//check if paddle is within bounds of x
+		 Block block = (Block)obj;
+			if((getX() <= block.getX() + block.getWidth()) && getX() >= block.getX() && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
+			{
+				return true;
+			}
+			return false;
+	 
+		 /*Paddle compare = (Paddle)obj;
+		 if((this.getX() <= compare.getX() + compare.getWidth()) && (this.getX() + this.getWidth() >= compare.getX()) &&//check if paddle is within bounds of x
 					((compare.getY() <= this.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) 
 							)){
 			return true;
 			}
 		 
-		 return false;
+		 return false;*/
 	 }
 
 	 
 	 public boolean didCollideRight(Object obj){
-		 Paddle compare = (Paddle)obj;
+		 Block block = (Block)obj;
+			if(getX() + getWidth() >= block.getX() && getX() < block.getX() && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
+			{
+				return true;
+			}
+			return false;
+		 /*Paddle compare = (Paddle)obj;
 		 if((this.getX() <= compare.getX() + compare.getWidth()) && (this.getX() >= compare.getX()) &&//check if paddle is within bounds of x
-					((compare.getY() <= this.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) 
+					((this.getY() >= compare.getY()) && (this.getY() <= compare.getY() + compare.getHeight()) 
 							)){
 			return true;
 			}
 		 
-		 return false;
+		 return false;*/
 	 }
 	 
 	 
-	 
 	 public boolean didCollideTop(Object obj){
-		return getY() <= 10;
+		 Block block = (Block)obj;
+			if(getY() <= block.getY() + block.getHeight() && getY() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
+			{
+				return true;
+			}
+			return false;
+		/*Paddle compare = (Paddle)obj;
+		if (this.getY() > compare.getY() && this.getY() < compare.getY() + compare.getHeight() && this.getX() > compare.getX() && this.getX() < compare.getX() + compare.getWidth()){
+			return true;
+		}
+		return false;*/
 	 }
 	 
 	 
 	 public boolean didCollideBottom(Object obj){
-		return getY() >= 550;
+		 Block block = (Block)obj;
+		 if(getY() <= block.getY() + block.getHeight() && getY() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
+			{
+				return true;
+			}
+			return false;
+		 /*Paddle compare = (Paddle)obj;
+			if (this.getX() <= compare.getX() + compare.getWidth() && this.getX() >= compare.getX() 
+					&& this.getY() <= compare.getY() + compare.getHeight() 
+					){
+				return true;
+			}*/
+			
 	 }
 	
 	 

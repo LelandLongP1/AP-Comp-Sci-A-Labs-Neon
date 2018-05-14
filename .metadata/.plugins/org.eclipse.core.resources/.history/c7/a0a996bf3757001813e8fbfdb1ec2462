@@ -1,0 +1,50 @@
+import java.awt.Color;
+import java.util.ArrayList;
+
+public class Level extends Block implements Collidable{
+
+private ArrayList<Block> bricks = new ArrayList<Block>();
+	
+	public Level(int x, int y, int w, int h, Color c){
+		for (int i = 0; i < 550; i+=50){
+			
+			bricks.add(new Block(x,y + i, h, w, c));
+		}
+		
+		for (int i = 0; i < 800; i += 50){
+			bricks.add(new Block(x + i, y , w, h,c));
+			bricks.add(new Block(x + i, y + 540, w, h, c));
+		}
+		
+		
+	}
+	
+	
+	public boolean didCollideLeft(Object obj) {
+		
+		return false;
+	}
+
+
+	public boolean didCollideRight(Object obj) {
+		
+		return false;
+	}
+
+
+	public boolean didCollideTop(Object obj) {
+		
+		return false;
+	}
+
+	
+	public boolean didCollideBottom(Object obj) {
+		
+		return false;
+	}
+	
+	public ArrayList<Block> getLevel(){
+		return bricks;
+	}
+
+}

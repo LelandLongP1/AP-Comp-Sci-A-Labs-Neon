@@ -123,7 +123,7 @@ public class PictureTester
   }
   
   public static void testBlur(int x, int y, int w, int h, int n){
-	  Picture redMoto = new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\redMotorcycle.jpg");
+	  Picture redMoto = new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\redMotorcycle.jpg");
 	  redMoto.explore();
 	   for (int i = 0; i<n; i++){
 		      redMoto.blur(x,y,w,h);
@@ -153,7 +153,7 @@ public class PictureTester
 	//testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorArms();
-    testBlur(190,160,20,20,100); 
+    //testBlur(190,160,20,20,100); 
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();

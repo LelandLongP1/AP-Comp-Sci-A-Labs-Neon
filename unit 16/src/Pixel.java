@@ -13,7 +13,10 @@ import java.awt.Color;
  */
 public class Pixel
 {
-  
+	
+  private String hBlue = "";
+  private String hGreen = "";
+  private String hRed = "";
   ////////////////////////// fields ///////////////////////////////////
   
   /** the digital picture this pixel belongs to */
