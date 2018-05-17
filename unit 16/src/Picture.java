@@ -379,6 +379,109 @@ public class Picture extends SimplePicture
 	    this.write("collage.jpg");
   }
   
+  
+  public void encoder(Picture message){
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel[][] pixelsMessage = message.getPixels2D();
+	  
+	  for (int row = 0; row < pixels.length; row++){
+		  for (int column = 0; column < pixels[0].length; column++){
+			  //average of colors
+			  
+			  Pixel current =  pixels[row][column];
+			  /*int average = 
+					 (current.getBlue() + 
+					  current.getRed() + 
+					  current.getGreen()) / 3;*/
+			  
+			  //black pixel
+			  if (pixelsMessage[row][column].getBlue() < 128 && 
+				  pixelsMessage[row][column].getRed() < 128 &&
+				  pixelsMessage[row][column].getGreen() < 128){
+				  
+				    if((current.getBlue() % 2 != 0 && (current.getBlue()/2) % 2 != 0)){
+				    	current.setBlue(current.getBlue() + 1);
+				    }
+				    else if (current.getBlue() % 2 != 0 && (current.getBlue()/2) % 2 == 0){
+				    	current.setBlue(current.getBlue() + 3);
+				    }
+				    else if (current.getBlue() % 2 == 0 && (current.getBlue()/2) % 2 != 0){
+				    	current.setBlue(current.getBlue() + 2);
+				    }
+				    
+				    
+				    
+				    if (current.getRed() % 2 == 0 && (current.getRed()/2) % 2 == 0){ 
+				    	current.setRed(current.getRed() + 3);
+				    }
+				    else if (current.getRed() % 2 != 0 && (current.getRed()/2) % 2 == 0){
+				    	current.setRed(current.getRed() + 2);
+				    }
+				    else if (current.getRed() % 2 == 0 && (current.getRed()/2) % 2 != 0){
+				    	current.setRed(current.getRed() + 1);
+				    }
+				    
+				    
+				    
+					if (current.getGreen() % 2 != 0 && (current.getGreen()/2) % 2 != 0){
+						current.setGreen(current.getGreen() + 1);
+					}
+					else if (current.getGreen() % 2 != 0 && (current.getGreen()/2) % 2 == 0){
+				    	current.setGreen(current.getGreen() + 3);
+				    }
+				    else if (current.getGreen() % 2 == 0 && (current.getGreen()/2) % 2 != 0){
+				    	current.setGreen(current.getGreen() + 2);
+				    } 							  
+				  
+			  }
+			  
+			  //white pixel
+			  else {
+				  //if ((average >> 1) % 3 == 0){
+					  if(current.getBlue() % 2 == 0 && (current.getBlue()/2) % 2 == 0){
+						   current.setBlue(current.getBlue() + 2);
+					  }
+					  if(current.getRed() % 2 != 0 && (current.getRed()/2) % 2 != 0){
+						  current.setRed(current.getRed() + 4);
+					  }
+					  if (current.getGreen() % 2 == 0 && (current.getGreen()/2) % 2 == 0){
+						  current.setGreen(current.getGreen() + 2);
+					  }
+						  		
+						 
+						  
+						  
+						  
+					  //}
+				  }
+			  }
+	  	  }
+	  
+	  //this.write("encodedImage.jpg");
+  }
+  
+  public void decoder(){
+	  Pixel[][]pixels = this.getPixels2D();
+	  for (int row = 0; row < pixels.length; row++){
+		  for (int column = 0; column < pixels[0].length; column++){
+			  Pixel temp = pixels[row][column];
+			  if (temp.getBlue() % 2 == 0 && (temp.getBlue()/2) % 2 == 0 &&
+					  temp.getRed() % 2 != 0 && (temp.getRed()/2) % 2 != 0 &&
+					  temp.getGreen() % 2 == 0 && (temp.getGreen()/2) % 2 == 0
+					  ){
+				  temp.setColor(Color.BLACK);
+			  }
+			  else {
+				  temp.setColor(Color.WHITE);
+			  }
+		  }
+	  }
+  }
+  
+  
+  
+  
+  
   public void myCollage()
   {
       Picture seagull = new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\seagull.jpg");
@@ -467,7 +570,6 @@ public class Picture extends SimplePicture
 
   }
   
- 
 
   
   
