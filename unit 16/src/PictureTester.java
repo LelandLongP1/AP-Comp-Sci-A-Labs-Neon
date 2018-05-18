@@ -115,9 +115,9 @@ public class PictureTester
   }
   
   public static void testEncoder(){
-	  Picture canvas = new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\beach.jpg");
+	  Picture canvas = new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\beach.jpg");
 	  canvas.explore();
-	  canvas.encoder(new Picture("C:\\Users\\longl5895\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\crybytes-apple_icon.jpg"));
+	  canvas.encoder(new Picture("C:\\Users\\Spam Sushi\\Desktop\\AP-Comp-Sci-A-Labs-Neon\\unit 16\\src\\crybytes-apple_icon.jpg"));
 	  canvas.explore();
 	  canvas.decoder();
 	  canvas.explore();

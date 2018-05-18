@@ -25,4 +25,8 @@ private ArrayList<Brick> bricks = new ArrayList<Brick>();
 	public ArrayList<Brick> getLevel(){
 		return bricks;
 	}
+	
+	public void deleteBrick(int i){
+		bricks.remove(i);
+	}
 }

@@ -96,8 +96,8 @@ public class Ball extends Block implements Collidable
 	
 	
 	 public boolean didCollideLeft(Object obj){
-		 Paddle block = (Paddle)obj;
-			if((getX() <= block.getX() + block.getWidth()) && getX() >= block.getX()  && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
+		 Block block = (Block)obj;
+			if((getX() == block.getX() + block.getWidth()) && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
 			{
 				return true;
 			}
@@ -115,8 +115,8 @@ public class Ball extends Block implements Collidable
 
 	 
 	 public boolean didCollideRight(Object obj){
-		 Paddle block = (Paddle)obj;
-			if(getX() + getWidth()  >= block.getX() && getX() < block.getX() + block.getWidth() && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
+		 Block block = (Block)obj;
+			if(getX() + getWidth() == block.getX() && getY() + getHeight()/2 > block.getY() && getY() + getHeight()/2 < block.getY() + block.getHeight())
 			{
 				return true;
 			}
@@ -133,8 +133,8 @@ public class Ball extends Block implements Collidable
 	 
 	 
 	 public boolean didCollideTop(Object obj){
-		 Paddle block = (Paddle)obj;
-			if(getY() <= block.getY() + block.getHeight() && getY() + getHeight() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
+		 Block block = (Block)obj;
+			if(getY() == block.getY() + block.getHeight() && getX() + getWidth() > block.getX() && getX() < block.getX() + block.getWidth())
 			{
 				return true;
 			}
@@ -148,8 +148,8 @@ public class Ball extends Block implements Collidable
 	 
 	 
 	 public boolean didCollideBottom(Object obj){
-		 Paddle block = (Paddle)obj;
-		 if(getY() <= block.getY() + block.getHeight() && getY() >= block.getY() && getX() >= block.getX() && getX() < block.getX() + block.getWidth())
+		 Block block = (Block)obj;
+			if(getY() + getHeight() == block.getY() && getX() + getWidth() > block.getX() && getX() < block.getX() + block.getWidth())
 			{
 				return true;
 			}

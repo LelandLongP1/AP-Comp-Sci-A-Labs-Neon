@@ -9,11 +9,15 @@ private ArrayList<Brick> bricks = new ArrayList<Brick>();
 		for (int i = 0; i < 550; i+=200){
 			
 			bricks.add(new Brick(x, y + i, h, w, c));
+			bricks.add(new Brick(x + h, y + i, h, w, c));
 			bricks.add(new Brick(x + 760, y + i, h, w, c ));
+			bricks.add(new Brick(x + 760 - h, y + i, h, w, c ));
 		}
 		
 		for (int i = 0; i < 800; i += 200){
 			bricks.add(new Brick(x + i, y , w, h,c));
+			bricks.add(new Brick(x + i, y + h , w, h,c));
+			bricks.add(new Brick(x + i, y + 530 - h, w, h, c));
 			bricks.add(new Brick(x + i, y + 530, w, h, c));
 		}
 		
@@ -25,6 +29,11 @@ private ArrayList<Brick> bricks = new ArrayList<Brick>();
 	
 	public ArrayList<Brick> getLevel(){
 		return bricks;
+	}
+	
+	
+	public void deleteBrick(int i){
+		bricks.remove(i);
 	}
 
 }
